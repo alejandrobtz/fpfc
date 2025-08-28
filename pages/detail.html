@@ -106,20 +106,24 @@
                 </p>
               </div>
             </div>
+            
+            <!-- Tab Navigation -->
             <div class="pb-3">
               <div class="flex border-b border-[#e3dfd4] px-4 gap-8">
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#f3ecd8] text-[#191610] pb-[13px] pt-4" href="#">
+                <button class="tab-btn flex flex-col items-center justify-center border-b-[3px] border-b-[#f3ecd8] text-[#191610] pb-[13px] pt-4" data-tab="metadatos">
                   <p class="text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]">Metadatos</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
+                </button>
+                <button class="tab-btn flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" data-tab="historial">
                   <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Historial de pH</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
-                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Archivos/Imágenes</p>
-                </a>
+                </button>
+                <button class="tab-btn flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" data-tab="imagenes">
+                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Imágenes</p>
+                </button>
               </div>
             </div>
-            <div class="p-4 grid grid-cols-2">
+            
+            <!-- Metadatos Tab Content -->
+            <div id="metadatos-content" class="tab-content p-4 grid grid-cols-2">
               <div class="flex flex-col gap-1 border-t border-solid border-t-[#e3dfd4] py-4 pr-2">
                 <p class="text-[#8b7e5b] text-sm font-normal leading-normal">Título</p>
                 <p class="text-[#191610] text-sm font-normal leading-normal">El Eco Silencioso</p>
@@ -157,20 +161,9 @@
                 <p class="text-[#191610] text-sm font-normal leading-normal">Frágil, manipular con cuidado. Requiere evaluación inmediata de conservación.</p>
               </div>
             </div>
-            <div class="pb-3">
-              <div class="flex border-b border-[#e3dfd4] px-4 gap-8">
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
-                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Metadatos</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#f3ecd8] text-[#191610] pb-[13px] pt-4" href="#">
-                  <p class="text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]">Historial de pH</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
-                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Archivos/Imágenes</p>
-                </a>
-              </div>
-            </div>
-            <div class="px-4 py-3 @container">
+            
+            <!-- Historial de pH Tab Content -->
+            <div id="historial-content" class="tab-content px-4 py-3 @container hidden">
               <div class="flex overflow-hidden rounded-xl border border-[#e3dfd4] bg-[#fbfaf9]">
                 <table class="flex-1">
                   <thead>
@@ -214,25 +207,14 @@
                 </table>
               </div>
               <style>
-                          @container(max-width:120px){.table-56be5e09-61fc-442a-b819-f5f6df395c40-column-120{display: none;}}
+                @container(max-width:120px){.table-56be5e09-61fc-442a-b819-f5f6df395c40-column-120{display: none;}}
                 @container(max-width:240px){.table-56be5e09-61fc-442a-b819-f5f6df395c40-column-240{display: none;}}
                 @container(max-width:360px){.table-56be5e09-61fc-442a-b819-f5f6df395c40-column-360{display: none;}}
               </style>
             </div>
-            <div class="pb-3">
-              <div class="flex border-b border-[#e3dfd4] px-4 gap-8">
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
-                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Metadatos</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#8b7e5b] pb-[13px] pt-4" href="#">
-                  <p class="text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]">Historial de pH</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#f3ecd8] text-[#191610] pb-[13px] pt-4" href="#">
-                  <p class="text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]">Archivos/Imágenes</p>
-                </a>
-              </div>
-            </div>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+            
+            <!-- Imágenes Tab Content -->
+            <div id="imagenes-content" class="tab-content grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4 hidden">
               <div class="flex flex-col gap-3">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
@@ -266,6 +248,51 @@
             profileDropdown.classList.add('hidden');
           }
         });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        function showTab(tabName) {
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.classList.add('hidden');
+          });
+
+          // Remove active state from all tab buttons
+          tabBtns.forEach(btn => {
+            btn.classList.remove('border-b-[#f3ecd8]', 'text-[#191610]');
+            btn.classList.add('border-b-transparent', 'text-[#8b7e5b]');
+            btn.querySelector('p').classList.remove('text-[#191610]');
+            btn.querySelector('p').classList.add('text-[#8b7e5b]');
+          });
+
+          // Show selected tab content
+          const selectedContent = document.getElementById(tabName + '-content');
+          if (selectedContent) {
+            selectedContent.classList.remove('hidden');
+          }
+
+          // Add active state to selected tab button
+          const selectedBtn = document.querySelector(`[data-tab="${tabName}"]`);
+          if (selectedBtn) {
+            selectedBtn.classList.remove('border-b-transparent', 'text-[#8b7e5b]');
+            selectedBtn.classList.add('border-b-[#f3ecd8]', 'text-[#191610]');
+            selectedBtn.querySelector('p').classList.remove('text-[#8b7e5b]');
+            selectedBtn.querySelector('p').classList.add('text-[#191610]');
+          }
+        }
+
+        // Add click event listeners to tab buttons
+        tabBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+            showTab(tabName);
+          });
+        });
+
+        // Show metadatos tab by default
+        showTab('metadatos');
       });
 
       function logout() {
