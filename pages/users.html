@@ -1,0 +1,616 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Users list</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden"
+      style="font-family: 'Work Sans', 'Noto Sans', sans-serif"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header
+          class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1efe9] px-10 py-3"
+        >
+          <div class="flex items-center gap-4 text-[#191610]">
+            <div class="size-4">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2
+              class="text-[#191610] text-lg font-bold leading-tight tracking-[-0.015em]"
+            >
+              Archivos
+            </h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a
+                class="text-[#191610] text-sm font-medium leading-normal"
+                href="./dashboard.html"
+                >Inicio</a
+              >
+              <a
+                class="text-[#191610] text-sm font-medium leading-normal"
+                href="#"
+                >Archivos</a
+              >
+              <a
+                class="text-[#191610] text-sm font-medium leading-normal"
+                href="./reports.html"
+                >Reportes</a
+              >
+            </div>
+            <div class="relative">
+              <button
+                id="profileBtn"
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f1efe9] text-[#191610] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+              >
+                <div class="text-[#191610]" data-icon="User" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.8,166.78,40.33,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,0,1,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                  </svg>
+                </div>
+                <span>Perfil</span>
+              </button>
+              <div
+                id="profileDropdown"
+                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+              >
+                <a
+                  href="./perfil.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Perfil
+                </a>
+                <a
+                  href="#"
+                  onclick="logout()"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Cerrar Sesión
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p
+                class="text-[#191610] tracking-light text-[32px] font-bold leading-tight min-w-72"
+              >
+                Usuarios
+              </p>
+              <button
+                onclick="openAddUserModal()"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal"
+              >
+                <span class="truncate">Agregar Usuario</span>
+              </button>
+            </div>
+            <div class="px-4 py-3 @container">
+              <div
+                class="flex overflow-hidden rounded-xl border border-[#e3dfd4] bg-[#fbfaf9]"
+              >
+                <table class="flex-1">
+                  <thead>
+                    <tr class="bg-[#fbfaf9]">
+                      <th
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 px-4 py-3 text-left text-[#191610] w-[400px] text-sm font-medium leading-normal"
+                      >
+                        Nombre
+                      </th>
+                      <th
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 px-4 py-3 text-left text-[#191610] w-[400px] text-sm font-medium leading-normal"
+                      >
+                        Correo electrónico
+                      </th>
+                      <th
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 px-4 py-3 text-left text-[#191610] w-60 text-sm font-medium leading-normal"
+                      >
+                        Rol
+                      </th>
+                      <th
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 px-4 py-3 text-left text-[#191610] w-60 text-sm font-medium leading-normal"
+                      >
+                        Estado
+                      </th>
+                      <th
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 px-4 py-3 text-left text-[#191610] w-60 text-[#8b7e5b] text-sm font-medium leading-normal"
+                      >
+                        Acciones
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersTableBody">
+                    <tr class="border-t border-t-[#e3dfd4]">
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+                      >
+                        Sofía Rodríguez
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+                      >
+                        sofia.rodriguez@example.com
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Administrador</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Activo</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+                      >
+                        Editar | Desactivar | Asignar Rol
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd4]">
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+                      >
+                        Carlos López
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+                      >
+                        carlos.lopez@example.com
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Editor</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Activo</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+                      >
+                        Editar | Desactivar | Asignar Rol
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd4]">
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+                      >
+                        Ana Martínez
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+                      >
+                        ana.martinez@example.com
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Visualizador</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Inactivo</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+                      >
+                        Editar | Activar | Asignar Rol
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd4]">
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+                      >
+                        Javier García
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+                      >
+                        javier.garcia@example.com
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Editor</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Activo</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+                      >
+                        Editar | Desactivar | Asignar Rol
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd4]">
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+                      >
+                        Isabel Fernández
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+                      >
+                        isabel.fernandez@example.com
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Visualizador</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Activo</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+                      >
+                        Editar | Desactivar | Asignar Rol
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <style>
+                @container (max-width:120px) {
+                  .table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 {
+                    display: none;
+                  }
+                }
+                @container (max-width:240px) {
+                  .table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 {
+                    display: none;
+                  }
+                }
+                @container (max-width:360px) {
+                  .table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 {
+                    display: none;
+                  }
+                }
+                @container (max-width:480px) {
+                  .table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 {
+                    display: none;
+                  }
+                }
+                @container (max-width:600px) {
+                  .table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 {
+                    display: none;
+                  }
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+          <h3 class="text-lg font-bold text-[#191610] mb-4">Agregar Nuevo Usuario</h3>
+          <form id="addUserForm">
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-[#191610] mb-2">Nombre</label>
+              <input
+                type="text"
+                id="userName"
+                class="w-full px-3 py-2 border border-[#e3dfd4] rounded-lg focus:outline-none focus:border-[#c39f3c]"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-[#191610] mb-2">Correo electrónico</label>
+              <input
+                type="email"
+                id="userEmail"
+                class="w-full px-3 py-2 border border-[#e3dfd4] rounded-lg focus:outline-none focus:border-[#c39f3c]"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-[#191610] mb-2">Rol</label>
+              <select
+                id="userRole"
+                class="w-full px-3 py-2 border border-[#e3dfd4] rounded-lg focus:outline-none focus:border-[#c39f3c]"
+                required
+              >
+                <option value="">Seleccionar rol</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Editor">Editor</option>
+                <option value="Visualizador">Visualizador</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-[#191610] mb-2">Estado</label>
+              <select
+                id="userStatus"
+                class="w-full px-3 py-2 border border-[#e3dfd4] rounded-lg focus:outline-none focus:border-[#c39f3c]"
+                required
+              >
+                <option value="">Seleccionar estado</option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
+            </div>
+            <div class="flex justify-end gap-3">
+              <button
+                type="button"
+                onclick="closeAddUserModal()"
+                class="px-4 py-2 text-sm font-medium text-[#8b7e5b] border border-[#e3dfd4] rounded-lg hover:bg-[#f1efe9]"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="px-4 py-2 text-sm font-medium text-white bg-[#c39f3c] rounded-lg hover:bg-[#b08f2a]"
+              >
+                Agregar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Mock data for users
+      let usersData = [
+        {
+          id: 1,
+          nombre: "Sofía Rodríguez",
+          email: "sofia.rodriguez@example.com",
+          rol: "Administrador",
+          estado: "Activo"
+        },
+        {
+          id: 2,
+          nombre: "Carlos López",
+          email: "carlos.lopez@example.com",
+          rol: "Editor",
+          estado: "Activo"
+        },
+        {
+          id: 3,
+          nombre: "Ana Martínez",
+          email: "ana.martinez@example.com",
+          rol: "Visualizador",
+          estado: "Inactivo"
+        },
+        {
+          id: 4,
+          nombre: "Javier García",
+          email: "javier.garcia@example.com",
+          rol: "Editor",
+          estado: "Activo"
+        },
+        {
+          id: 5,
+          nombre: "Isabel Fernández",
+          email: "isabel.fernandez@example.com",
+          rol: "Visualizador",
+          estado: "Activo"
+        }
+      ];
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const addUserForm = document.getElementById('addUserForm');
+
+        profileBtn.addEventListener('click', function() {
+          profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.add('hidden');
+          }
+        });
+
+        // Handle form submission
+        addUserForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          addNewUser();
+        });
+
+        // Initial render
+        renderUsersTable();
+      });
+
+      function openAddUserModal() {
+        document.getElementById('addUserModal').classList.remove('hidden');
+      }
+
+      function closeAddUserModal() {
+        document.getElementById('addUserModal').classList.add('hidden');
+        document.getElementById('addUserForm').reset();
+      }
+
+      function addNewUser() {
+        const name = document.getElementById('userName').value;
+        const email = document.getElementById('userEmail').value;
+        const role = document.getElementById('userRole').value;
+        const status = document.getElementById('userStatus').value;
+
+        if (name && email && role && status) {
+          const newUser = {
+            id: usersData.length + 1,
+            nombre: name,
+            email: email,
+            rol: role,
+            estado: status
+          };
+
+          usersData.push(newUser);
+          renderUsersTable();
+          closeAddUserModal();
+        }
+      }
+
+      function renderUsersTable() {
+        const tbody = document.getElementById('usersTableBody');
+        tbody.innerHTML = '';
+
+        usersData.forEach(user => {
+          const row = document.createElement('tr');
+          row.className = 'border-t border-t-[#e3dfd4]';
+
+          row.innerHTML = `
+            <td
+              class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal"
+            >
+              ${user.nombre}
+            </td>
+            <td
+              class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal"
+            >
+              ${user.email}
+            </td>
+            <td
+              class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+            >
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+              >
+                <span class="truncate">${user.rol}</span>
+              </button>
+            </td>
+            <td
+              class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+            >
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1efe9] text-[#191610] text-sm font-medium leading-normal w-full"
+              >
+                <span class="truncate">${user.estado}</span>
+              </button>
+            </td>
+            <td
+              class="table-5213143a-6e3d-4e17-8e86-00b85590e5b4-column-600 h-[72px] px-4 py-2 w-60 text-[#8b7e5b] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="cursor-pointer text-[#c39f3c] hover:text-[#b08f2a]" onclick="editUser(${user.id})">Editar</span> | 
+              <span class="cursor-pointer text-[#c39f3c] hover:text-[#b08f2a]" onclick="toggleUserStatus(${user.id})">${user.estado === 'Activo' ? 'Desactivar' : 'Activar'}</span> | 
+              <span class="cursor-pointer text-[#c39f3c] hover:text-[#b08f2a]" onclick="assignRole(${user.id})">Asignar Rol</span>
+            </td>
+          `;
+
+          tbody.appendChild(row);
+        });
+      }
+
+      function editUser(userId) {
+        const user = usersData.find(u => u.id === userId);
+        if (user) {
+          alert(`Editando usuario: ${user.nombre}`);
+          // Here you would typically open an edit modal
+        }
+      }
+
+      function toggleUserStatus(userId) {
+        const user = usersData.find(u => u.id === userId);
+        if (user) {
+          user.estado = user.estado === 'Activo' ? 'Inactivo' : 'Activo';
+          renderUsersTable();
+        }
+      }
+
+      function assignRole(userId) {
+        const user = usersData.find(u => u.id === userId);
+        if (user) {
+          const newRole = prompt(`Asignar nuevo rol para ${user.nombre}:`, user.rol);
+          if (newRole && ['Administrador', 'Editor', 'Visualizador'].includes(newRole)) {
+            user.rol = newRole;
+            renderUsersTable();
+          }
+        }
+      }
+
+      function logout() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          window.location.href = './index.html';
+        }
+      }
+    </script>
+  </body>
+</html>

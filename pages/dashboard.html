@@ -1,0 +1,570 @@
+<html lang="es">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+    <meta charset="UTF-8" />
+
+    <title>FPFC - Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden"
+      style="font-family: 'Work Sans', 'Noto Sans', sans-serif"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="gap-1 px-6 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col w-80">
+            <div
+              class="flex h-full min-h-[700px] flex-col justify-between bg-[#fbfaf9] p-4"
+            >
+              <div class="flex flex-col gap-4">
+                <div class="flex flex-col">
+                  <h1
+                    class="text-[#191710] text-base font-medium leading-normal"
+                  >
+                    Sistema de Archivos
+                  </h1>
+                  <p class="text-[#8c7f5a] text-sm font-normal leading-normal">
+                    Versión 1.0
+                  </p>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <div
+                    class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#f1efe9] hover:font-bold"
+                  >
+                    <div
+                      class="text-[#191710]"
+                      data-icon="ArchiveBox"
+                      data-size="24px"
+                      data-weight="fill"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24px"
+                        height="24px"
+                        fill="currentColor"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M223.16,68.42l-16-32A8,8,0,0,0,200,32H56a8,8,0,0,0-7.16,4.42l-16,32A8.08,8.08,0,0,0,32,72V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A8.08,8.08,0,0,0,223.16,68.42Zm-57.5,89.24-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L120,164.69V104a8,8,0,0,1,16,0v60.69l18.34-18.35a8,8,0,0,1,11.32,11.32ZM52.94,64l8-16H195.06l8,16Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <p
+                      class="text-[#191710] text-sm font-medium leading-normal hover:font-bold"
+                    >
+                      <a href="./inventory.html">Inventario</a>
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-3 px-3 py-2 hover:bg-[#f1efe9] rounded-xl">
+                    <div
+                      class="text-[#191710]"
+                      data-icon="Users"
+                      data-size="24px"
+                      data-weight="regular"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24px"
+                        height="24px"
+                        fill="currentColor"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <p
+                      class="text-[#191710] text-sm font-medium leading-normal hover:font-bold"
+                    >
+                      <a href="./users.html">Usuarios</a>
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-3 px-3 py-2 hover:bg-[#f1efe9] rounded-xl ">
+                    <div
+                      class="text-[#191710]"
+                      data-icon="PresentationChart"
+                      data-size="24px"
+                      data-weight="regular"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24px"
+                        height="24px"
+                        fill="currentColor"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <p
+                      class="text-[#191710] text-sm font-medium leading-normal hover:font-bold cursor-pointer"
+                      onclick="window.location.href='./reports.html'"
+                    >
+                      Reportes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p
+                class="text-[#191710] tracking-light text-[32px] font-bold leading-tight min-w-72"
+              >
+                Panel de Control
+              </p>
+              <div class="relative">
+                <button
+                  id="profileBtn"
+                  class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f1efe9] text-[#191610] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+                >
+                  <div class="text-[#191610]" data-icon="User" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.8,166.78,40.33,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                    </svg>
+                  </div>
+                  <span>Perfil</span>
+                </button>
+                <div
+                  id="profileDropdown"
+                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+                >
+                  <a
+                    href="./perfil.html"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Perfil
+                  </a>
+                  <a
+                    href="#"
+                    onclick="logout()"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Cerrar Sesión
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-4 p-4">
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#e3dfd3]"
+              >
+                <p class="text-[#191710] text-base font-medium leading-normal">
+                  Total de Artículos
+                </p>
+                <p
+                  class="text-[#191710] tracking-light text-2xl font-bold leading-tight"
+                >
+                  1,250
+                </p>
+              </div>
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#e3dfd3]"
+              >
+                <p class="text-[#191710] text-base font-medium leading-normal">
+                  Usuarios Activos
+                </p>
+                <p
+                  class="text-[#191710] tracking-light text-2xl font-bold leading-tight"
+                >
+                  15
+                </p>
+              </div>
+              <div
+                class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#e3dfd3]"
+              >
+                <p class="text-[#191710] text-base font-medium leading-normal">
+                  Reportes Generados
+                </p>
+                <p
+                  class="text-[#191710] tracking-light text-2xl font-bold leading-tight"
+                >
+                  32
+                </p>
+              </div>
+            </div>
+            <h2
+              class="text-[#191710] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+            >
+              Resumen del Inventario
+            </h2>
+            <div class="flex flex-wrap gap-4 px-4 py-6">
+              <div
+                class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl border border-[#e3dfd3] p-6"
+              >
+                <p class="text-[#191710] text-base font-medium leading-normal">
+                  Artículos por Formato
+                </p>
+                <div
+                  class="grid min-h-[180px] grid-flow-col gap-6 grid-rows-[1fr_auto] items-end justify-items-center px-3"
+                >
+                  <div
+                    class="border-[#8c7f5a] bg-[#f1efe9] border-t-2 w-full"
+                    style="height: 80%"
+                  ></div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Libros
+                  </p>
+                  <div
+                    class="border-[#8c7f5a] bg-[#f1efe9] border-t-2 w-full"
+                    style="height: 20%"
+                  ></div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Documentos
+                  </p>
+                  <div
+                    class="border-[#8c7f5a] bg-[#f1efe9] border-t-2 w-full"
+                    style="height: 90%"
+                  ></div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Fotos
+                  </p>
+                  <div
+                    class="border-[#8c7f5a] bg-[#f1efe9] border-t-2 w-full"
+                    style="height: 50%"
+                  ></div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Audio
+                  </p>
+                  <div
+                    class="border-[#8c7f5a] bg-[#f1efe9] border-t-2 w-full"
+                    style="height: 40%"
+                  ></div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Video
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl border border-[#e3dfd3] p-6"
+              >
+                <p class="text-[#191710] text-base font-medium leading-normal">
+                  Artículos por Estado
+                </p>
+                <div
+                  class="grid min-h-[180px] gap-x-4 gap-y-6 grid-cols-[auto_1fr] items-center py-3"
+                >
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Procesado
+                  </p>
+                  <div class="h-full flex-1">
+                    <div
+                      class="border-[#8c7f5a] bg-[#f1efe9] border-r-2 h-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Pendiente
+                  </p>
+                  <div class="h-full flex-1">
+                    <div
+                      class="border-[#8c7f5a] bg-[#f1efe9] border-r-2 h-full"
+                      style="width: 10%"
+                    ></div>
+                  </div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Archivado
+                  </p>
+                  <div class="h-full flex-1">
+                    <div
+                      class="border-[#8c7f5a] bg-[#f1efe9] border-r-2 h-full"
+                      style="width: 30%"
+                    ></div>
+                  </div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Dañado
+                  </p>
+                  <div class="h-full flex-1">
+                    <div
+                      class="border-[#8c7f5a] bg-[#f1efe9] border-r-2 h-full"
+                      style="width: 80%"
+                    ></div>
+                  </div>
+                  <p
+                    class="text-[#8c7f5a] text-[13px] font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Perdido
+                  </p>
+                  <div class="h-full flex-1">
+                    <div
+                      class="border-[#8c7f5a] bg-[#f1efe9] border-r-2 h-full"
+                      style="width: 60%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2
+              class="text-[#191710] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+            >
+              Artículos Recientes
+            </h2>
+            <div class="px-4 py-3 @container">
+              <div
+                class="flex overflow-hidden rounded-xl border border-[#e3dfd3] bg-[#fbfaf9]"
+              >
+                <table class="flex-1">
+                  <thead>
+                    <tr class="bg-[#fbfaf9]">
+                      <th
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 px-4 py-3 text-left text-[#191710] w-[400px] text-sm font-medium leading-normal"
+                      >
+                        Título
+                      </th>
+                      <th
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 px-4 py-3 text-left text-[#191710] w-[400px] text-sm font-medium leading-normal"
+                      >
+                        Código
+                      </th>
+                      <th
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 px-4 py-3 text-left text-[#191710] w-60 text-sm font-medium leading-normal"
+                      >
+                        Formato
+                      </th>
+                      <th
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 px-4 py-3 text-left text-[#191710] w-60 text-sm font-medium leading-normal"
+                      >
+                        Estado
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-t border-t-[#e3dfd3]">
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal"
+                      >
+                        La Historia de Cartagena
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal"
+                      >
+                        ARC-001
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Libro</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Procesado</span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd3]">
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal"
+                      >
+                        Documentos de Independencia
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal"
+                      >
+                        ARC-002
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Documento</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Pendiente</span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd3]">
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal"
+                      >
+                        Colección de Fotos de Gabriel Garcia Marquez
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal"
+                      >
+                        ARC-003
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Foto</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Archivado</span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd3]">
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal"
+                      >
+                        Grabaciones de Audio de Música Folclórica
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal"
+                      >
+                        ARC-004
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Audio</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Dañado</span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#e3dfd3]">
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal"
+                      >
+                        Entrevistas en Video con Historiadores
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal"
+                      >
+                        ARC-005
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Video</span>
+                        </button>
+                      </td>
+                      <td
+                        class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal"
+                      >
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full"
+                        >
+                          <span class="truncate">Perdido</span>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <style>
+                @container (max-width:120px) {
+                  .table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 {
+                    display: none;
+                  }
+                }
+                @container (max-width:240px) {
+                  .table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 {
+                    display: none;
+                  }
+                }
+                @container (max-width:360px) {
+                  .table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 {
+                    display: none;
+                  }
+                }
+                @container (max-width:480px) {
+                  .table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 {
+                    display: none;
+                  }
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        profileBtn.addEventListener('click', function() {
+          profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.add('hidden');
+          }
+        });
+      });
+
+      function logout() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          window.location.href = './index.html';
+        }
+      }
+    </script>
+  </body>
+</html>

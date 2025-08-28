@@ -52,10 +52,37 @@
                 </svg>
               </div>
             </button>
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2GO0TSvdilDVoil4UxXRjcDWSeQvKe3uAHOEJCtL1JHuLBpgr3j91zQfVU4tsOKwED-zl2_jah3a2GcZ_jPBkSw0MdigoNaekWYct5mQBfjy2w0xZidVQEkFdocQPDLntNxFLEvda8_-uJuLx4WWiB2avhsc0JS6EQP2pa6l8DQOH6obEWfVo5y9pU8KD3p5Erk8fJ3qpP3q_T4BCKUFFJD-X52P6KJ3v0PsW_Rb-iNWZYBueYM8DJ1oIJtyYtD3DgP6fYCCYLgYz");'
-            ></div>
+            <div class="relative">
+              <button
+                id="profileBtn"
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f1efe9] text-[#191610] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+              >
+                <div class="text-[#191610]" data-icon="User" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.8,166.78,40.33,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,0,1,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                  </svg>
+                </div>
+                <span>Perfil</span>
+              </button>
+              <div
+                id="profileDropdown"
+                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+              >
+                <a
+                  href="./perfil.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Perfil
+                </a>
+                <a
+                  href="#"
+                  onclick="logout()"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Cerrar Sesión
+                </a>
+              </div>
+            </div>
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -77,6 +104,7 @@
                     </svg>
                   </div>
                   <input
+                    id="searchInput"
                     placeholder="Buscar por título, director, etc."
                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#191610] focus:outline-0 focus:ring-0 border-none bg-[#f1efe9] focus:border-none h-full placeholder:text-[#8b7e5b] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
                     value=""
@@ -86,18 +114,34 @@
             </div>
             <h3 class="text-[#191610] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Filtros</h3>
             <div class="flex gap-3 p-3 flex-wrap pr-4">
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] pl-4 pr-4">
-                <p class="text-[#191610] text-sm font-medium leading-normal">Nombre</p>
-              </div>
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] pl-4 pr-4">
+              <button
+                class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#c39f3c] text-white pl-4 pr-4 cursor-pointer"
+                data-filter="nombre"
+                onclick="selectFilter(this, 'nombre')"
+              >
+                <p class="text-white text-sm font-medium leading-normal">Nombre</p>
+              </button>
+              <button
+                class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] text-[#191610] pl-4 pr-4 cursor-pointer"
+                data-filter="año"
+                onclick="selectFilter(this, 'año')"
+              >
                 <p class="text-[#191610] text-sm font-medium leading-normal">Año</p>
-              </div>
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] pl-4 pr-4">
+              </button>
+              <button
+                class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] text-[#191610] pl-4 pr-4 cursor-pointer"
+                data-filter="material"
+                onclick="selectFilter(this, 'material')"
+              >
                 <p class="text-[#191610] text-sm font-medium leading-normal">Material</p>
-              </div>
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] pl-4 pr-4">
+              </button>
+              <button
+                class="filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] text-[#191610] pl-4 pr-4 cursor-pointer"
+                data-filter="autor"
+                onclick="selectFilter(this, 'autor')"
+              >
                 <p class="text-[#191610] text-sm font-medium leading-normal">Autor</p>
-              </div>
+              </button>
             </div>
             <div class="px-4 py-3 @container">
               <div class="flex overflow-hidden rounded-xl border border-[#e3dfd4] bg-[#fbfaf9]">
@@ -113,7 +157,7 @@
                       <th class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-536 px-4 py-3 text-left text-[#191610] w-[400px] text-sm font-medium leading-normal">Autor</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="inventoryTableBody">
                     <tr class="border-t border-t-[#e3dfd4] hover:bg-[#E8C8C8] cursor-pointer">
                       <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-56 h-[72px] px-4 py-2 w-14 text-sm font-normal leading-normal">
                         <div
@@ -289,5 +333,193 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Mock data for inventory
+      const inventoryData = [
+        {
+          id: 1,
+          nombre: "El Eco Silencioso",
+          año: "1968",
+          material: "Nitrato de Celulosa",
+          autor: "Elías Thorne",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAObrOagz1XXEvx6uQKaX58w7z9zKuTlbpaFOTcCyXT5UjlttAMks77y6mgEk_puDm-CI25wZAsB4B5TA6dncjemiMxw4JUzmC7mb3Rx60KRZKTF20SqHa_wFKDt7yxljtNXJALf6MWkr9Eh4G-fNBm7Oy0FD60vVO9sU9DyrkEefoHvpQavSftjXtkTMrTxDs2M73-JHp985F6wBqcofurGICtm3tDS0Q5tLICCALhM6M-_-GTZDeCsb6m0upyLjkRKptuHG4cQsaK"
+        },
+        {
+          id: 2,
+          nombre: "Memorias de un Viaje",
+          año: "2018",
+          material: "35mm",
+          autor: "Carlos Rivas",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW_3orOsWoHHdST-dZinjKVs1yDo1aagTRb45Kj8gWT-1Kx-chb6cwVhpG5dSDEt312WnpvhtgXExmRXQciLdEDGPb172GZTOFI9iXHZw2-IL1BRXHz7WT78YEsGhwcgGJQuScS-P4rWk5_x_lopi569EikI9lKOWr4liPCxBBwZ3Km9TkqTYCJAOC0guiFvzGto_8m_C56KhfRSLs4REkcLokW7cVQlrpKLj1Z0o5UiwqXUwacXrexCkFzHeiNdyONR_kPgoHahjJ"
+        },
+        {
+          id: 3,
+          nombre: "La Ciudad Perdida",
+          año: "2020",
+          material: "Digital",
+          autor: "Ana Torres",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAlsUgsNkEJNWpKLpHks9GfuyBEyq9SA-f2yHmAeGU6NEEPJOMJpJ1Hsl-NNvrWKK9kM0OkVqO55nhKWIKwFGJcmtaHVExHSvjdUxiMt9K1yqh59s6eKPPewMc3rVb3twuhgMDRsVdhMIzb5U-IDmW7CGAKiUv_82Rq-A_htxjC-VF9zbJoqwM2oiokWTVez09LAi7uApn3Oo6OKsTbKfyyXWACaKueoA23f2ffXk_TlOQweCtFJIrgAwEnWrGML-kIbv2_iBnioBK"
+        },
+        {
+          id: 4,
+          nombre: "Reflejos en el Agua",
+          año: "2015",
+          material: "16mm",
+          autor: "Luis García",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCT60_X61rPQGKD8w1FNpzbuSOeSUwEYiUDgeADuAW_My-2pNGb81xi5EFEJSAGVS1Mfygq4LSvkzfgU-2S7sF8JWXTkKFdvmb6zO8q9D9CostoPXfZsrdbiY5lXeeQQOEBgoj_ThlXERExBm1EVQn6C7zuelZPG_5YBq-QSZWb1eoiOzRTtCsgm-zgs_DFiJ4HlkkX3AWiF07qJo-A6kQ3q7CZW6SUZ5yn9smeQWIwoe8rkQ0EWKgZXiNktK6Lfv7DKJgzNucgxyP7"
+        },
+        {
+          id: 5,
+          nombre: "Sombras del Pasado",
+          año: "2019",
+          material: "Digital",
+          autor: "Elena Sánchez",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuB079L3TcTRwXERgsxusFd9x3H5KkBMuHnwtwFumvcgV7tTiILdUvErVmXJq2Zxr0NtKWTHKyWkMm9Fge2fqMbLU30ce968ud7cqsyFz15iyAQhyenUgmEh3CSap7emiZc8sfxiYpqNNmmC9iNphtQhZdzSpQTChS0qSM3GWdgSTAzGaUXZosCb0xEz41FZHajT5Wjzle9u9lJDiT5KGEkgKOM-QrdAG3fJ-09O_J4imdtXhlPuu2vX91_UgwyLIiVu9X69ockDmR9n"
+        },
+        {
+          id: 6,
+          nombre: "Un Nuevo Amanecer",
+          año: "2021",
+          material: "35mm",
+          autor: "Javier Pérez",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGQzqcUlCxuVXbrh52BqPf2VBVxBG7hj0lZksFNtpgYH8-nyPu3ghXZ0XylYm0W-ZwYMrvIWHxQ7kO5jl4rpPuSMD_8Pq6-euOYNwmIHYg6J0q2_tjYhlkihkz2Zk1GixEYrvfgCU2u4RWOOkov8MgxH8ZfBNj-FKJsisj-03V52Dw-sgSVpQH9Qax46xjd5xQRE-qMtkreMVIQpkbeTkN_LkIUh9iDLFEHWb0N4te9ZZ7FVYooxL4V4jgko53DGr98ExAr1gf0Igb"
+        },
+        {
+          id: 7,
+          nombre: "El Silencio de la Noche",
+          año: "2017",
+          material: "16mm",
+          autor: "María López",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQnApjeGb2Xp15kjPfyMks5ZlFk6qUG5Bd-ox7KExLOavIaAb9DDl-1bKczbymwWP9MYvezJ_XgUx9FuF9k9EtomRacSLBi9CjAPlpsAxM4ilg59tkOFVAQ8cY4jb5tDVh23oAD1mm18tHRR9eXMPMRtzZSG8IYNEZfc6XPVX4FMJbHr7G-HXkjYqp1K_HxdvrH6Kl7_h_7iY6AfWaiJZQMbzxrAj3r9DydCqwi0SzYw_K0as-fkARv59-4LFWYLCocRxwhb-P96vH"
+        },
+        {
+          id: 8,
+          nombre: "Caminos Cruzados",
+          año: "2023",
+          material: "Digital",
+          autor: "Ricardo Gómez",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAoi8dMdbd8QSw8j-D1d-zUON_5GfjwpIAnwCWPUIcGh7Xl556IVuIEBXuX1HXcXPyMQANM70ITD0F1f6qvGUfUxhF0oIYTs2JPmQswcTCdzEejr_b91XGjJ2q8-XL11S6B9Mj6cR-Dn9J09y2Iga33HANjdn8DK6TWMgPvfn0T3TdK4g4QI1QMhCZ45utiB6Cdo-qOruK3GR0hTDD3B6hTsazTVOZY4jpxq7x6vtFJOyoVACoxikA_K0649-wi0qDVNm-vCybIjSqX"
+        },
+        {
+          id: 9,
+          nombre: "Sueños de Libertad",
+          año: "2016",
+          material: "35mm",
+          autor: "Isabel Fernández",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4TYZe2LkTGnsBw3vQmADvDzn1gHUBdi9KFwvfD5VcEaIDNGYuoUWxCNqYmOJQ93UfGJBMe2Qqdpfdc4OfiRns0OzHJtNlGwtPIpZQMGRCU4QDyWZHGYWlrQYNmSBDxqVGu4Jub7HCD4LBbGhBk02T2UwAZjHpbnd4AQAaLiB4mi0kAPu1T8t3p7mPPm5BC5LhNHoVhAfZtALkKJMRc5xVVbQOxR1Zf2njHO5ZOadXAFvuiz1aSUwvr-IclwJBFENFw_9-mKzjyzXJ"
+        },
+        {
+          id: 10,
+          nombre: "La Última Estación",
+          año: "2014",
+          material: "16mm",
+          autor: "Daniel Castro",
+          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5T7Qjr61IL0MlHOPmQFbMX-hlE-XoTa544oZcoiDfgOA2qnuungHnflzmFjcD6TKNwHDe0VKRp_44GcwSVpAYX03Ou7lW9gK5S_srUG58mEjqkje5Xmdkwmx6WN2KV0Kg41cL1e56CEIDsElb7m2PE2e9W93cibaGujDBYsKNr5Z7S2agJz2u75GGkG_E0HZXvC6ratsSC71VjWDQ12QRz7mEs3sYU55nIVHnI4R63EZICEILO5m1sbtEP43Cdl9r_k-Jtk4rsgq2"
+        }
+      ];
+
+      let currentFilter = 'nombre';
+      let filteredData = [...inventoryData];
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const searchInput = document.getElementById('searchInput');
+
+        profileBtn.addEventListener('click', function() {
+          profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.add('hidden');
+          }
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+          performSearch();
+        });
+
+        // Initial render
+        renderTable();
+      });
+
+      function selectFilter(button, filterType) {
+        // Reset all filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.className = 'filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f1efe9] text-[#191610] pl-4 pr-4 cursor-pointer';
+        });
+
+        // Highlight selected filter
+        button.className = 'filter-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#c39f3c] text-white pl-4 pr-4 cursor-pointer';
+
+        currentFilter = filterType;
+        performSearch();
+      }
+
+      function performSearch() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        if (searchTerm === '') {
+          filteredData = [...inventoryData];
+        } else {
+          filteredData = inventoryData.filter(item => {
+            switch (currentFilter) {
+              case 'nombre':
+                return item.nombre.toLowerCase().includes(searchTerm);
+              case 'año':
+                return item.año.toLowerCase().includes(searchTerm);
+              case 'material':
+                return item.material.toLowerCase().includes(searchTerm);
+              case 'autor':
+                return item.autor.toLowerCase().includes(searchTerm);
+              default:
+                return item.nombre.toLowerCase().includes(searchTerm);
+            }
+          });
+        }
+        
+        renderTable();
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById('inventoryTableBody');
+        tbody.innerHTML = '';
+
+        filteredData.forEach(item => {
+          const row = document.createElement('tr');
+          row.className = 'border-t border-t-[#e3dfd4] hover:bg-[#E8C8C8] cursor-pointer';
+          row.onclick = () => window.location.href = `./detail.html?id=${item.id}`;
+
+          row.innerHTML = `
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-56 h-[72px] px-4 py-2 w-14 text-sm font-normal leading-normal">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10"
+                style="background-image: url('${item.portada}');"
+              ></div>
+            </td>
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-176 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal">
+              <a href="./detail.html?id=${item.id}">${item.nombre}</a>
+            </td>
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-296 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">${item.año}</td>
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-416 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">${item.material}</td>
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-536 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">
+              ${item.autor}
+            </td>
+          `;
+
+          tbody.appendChild(row);
+        });
+      }
+
+      function logout() {
+        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+          window.location.href = './index.html';
+        }
+      }
+    </script>
   </body>
 </html>
