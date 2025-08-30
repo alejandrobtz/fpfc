@@ -1,186 +1,138 @@
 # FPFC - Sistema de Archivos
 
-Sistema de gestión de archivos para la Fundación Patrimonio Fílmico Colombiano.
+## Descripción
+Sistema de gestión de archivos para el Archivo Nacional, desarrollado con HTML, CSS (Tailwind) y JavaScript vanilla.
 
-## Estructura del Proyecto
+## Características Principales
 
-```
-fpfc/
-├── pages/                 # Páginas HTML de la aplicación
-│   ├── index.html        # Página de login
-│   ├── dashboard.html    # Panel principal
-│   ├── inventory.html    # Gestión de inventario
-│   ├── users.html        # Gestión de usuarios
-│   ├── perfil.html       # Perfil de usuario
-│   ├── reports.html      # Generación de reportes
-│   └── detail.html       # Detalle de registro
-├── img/                  # Imágenes del proyecto
-│   └── fpfclogo.jpg     # Logo de FPFC
-├── script.js             # Funcionalidad JavaScript común
-├── styles.css            # Estilos CSS personalizados
-└── README.md             # Este archivo
-```
+### Dashboard
+- Panel de control con estadísticas del inventario
+- Vista de artículos recientes con acciones de edición y eliminación
+- Botón "Agregar Soporte" para crear nuevos registros
+- Navegación a diferentes secciones del sistema
 
-## Funcionalidades Implementadas
+### Formulario de Registro
+Formulario acordeón con las siguientes secciones:
 
-### 1. Sistema de Autenticación
-- **Login**: Formulario de acceso con validación
-- **Credenciales**: Usuario: cualquier email, Contraseña: `12345678`
-- **Botón deshabilitado**: Se habilita solo cuando ambos campos tienen datos
-- **Redirección**: Al dashboard tras login exitoso
+#### 1. Información Básica
+- Imagen miniatura (upload de archivo)
+- Código (número)
+- Título (texto)
+- Año (dropdown)
+- País (dropdown con países latinoamericanos y europeos)
+- Empresa productora (dropdown con empresas colombianas)
+- Director/a (texto)
+- Duración (tiempo)
+- Actual (número)
+- Antiguo (número)
 
-### 2. Gestión de Inventario
-- **Búsqueda en tiempo real**: Filtrado por título, director, etc.
-- **Filtros activos**: Botones para filtrar por nombre, año, material, autor
-- **Filtro por defecto**: "Nombre" seleccionado automáticamente
-- **Tabla dinámica**: Se actualiza según búsqueda y filtros
-- **Navegación**: Enlaces a página de detalle
+#### 2. Identificación y Características del Material
+- Imagen (texto)
+- Sonido (texto)
+- Tipo de material (checkboxes: negativo, positivo, reversible, blanco, negro, color)
 
-### 3. Gestión de Usuarios
-- **Agregar usuario**: Modal con formulario completo
-- **Campos**: Nombre, email, rol, estado
-- **Roles disponibles**: Administrador, Editor, Visualizador
-- **Estados**: Activo, Inactivo
-- **Acciones**: Editar, Activar/Desactivar, Asignar Rol
+#### 3. Producción y Créditos
+- Productor ejecutivo
+- Productor asociado
+- Guionista
+- Fotógrafo
+- Editor
 
-### 4. Sistema de Perfil
-- **Información personal**: Nombre, email, teléfono, departamento, biografía
-- **Edición**: Formularios editables con validación
-- **Seguridad**: Cambio de contraseña, autenticación de dos factores
-- **Restauración**: Botón para restaurar valores originales
+#### 4. Soporte Actual
+- Tipo de soporte (checkboxes: fílmico, magnético, óptico, digital, restaurado)
+- Fecha restauración
+- Resolución/códec
+- Peso con unidades (KG, Grs, Lbs)
+- Aspect ratio
+- FPS
 
-### 5. Generación de Reportes
-- **Campos arrastrables**: Selección de campos por drag & drop
-- **Opciones de exportación**: Excel, CSV, PDF
-- **Ordenamiento**: Por nombre, año, fecha, estado
-- **Dirección**: Ascendente o descendente
-- **Validación**: Al menos un campo debe ser seleccionado
+#### 5. Historial de pH
+- Input para nuevo registro
+- Tabla de historial de registros
 
-### 6. Navegación y Perfil
-- **Dropdown de perfil**: Accesible desde todas las páginas
-- **Opciones**: Perfil, Cerrar Sesión
-- **Logout**: Confirmación y redirección al login
-- **Navegación consistente**: Enlaces entre todas las páginas
+#### 6. Ubicación y Almacenamiento
+- Tipo de ubicación (signatura o bóveda)
+- Código de ubicación
+
+#### 7. Descripción y Materiales Relacionados
+- Sinopsis (textarea)
+- Sistema de créditos con roles (actor, producción, escritor, etc.)
+- Tabla dinámica de créditos
+
+#### 8. Adjuntos
+- Guión
+- Materiales adicionales (fotografías, cartel, sonido)
+- Observaciones con historial
+- Link Koha
+
+## Funcionalidades
+
+### Crear Nuevo Registro
+1. Hacer clic en "Agregar Soporte" en el dashboard
+2. Se abre el formulario en una ventana emergente
+3. Completar los campos requeridos
+4. Guardar como borrador o guardar y cerrar
+
+### Editar Registro Existente
+1. Hacer clic en "Editar" en la tabla de artículos
+2. Se abre el formulario con los datos existentes
+3. Modificar los campos necesarios
+4. Guardar cambios
+
+### Eliminar Registro
+1. Hacer clic en "Eliminar" en la tabla de artículos
+2. Confirmar la eliminación
+3. El registro se elimina del sistema
 
 ## Tecnologías Utilizadas
 
 - **HTML5**: Estructura semántica
 - **CSS3**: Estilos con Tailwind CSS
-- **JavaScript ES6+**: Funcionalidad interactiva
-- **Tailwind CSS**: Framework de utilidades CSS
-- **Responsive Design**: Diseño adaptable a diferentes dispositivos
+- **JavaScript**: Funcionalidad del lado del cliente
+- **LocalStorage**: Almacenamiento temporal de datos
+- **Ventanas emergentes**: Para el formulario de registro
+
+## Estructura de Archivos
+
+```
+fpfc/
+├── pages/
+│   ├── dashboard.html      # Panel principal
+│   ├── record-form.html    # Formulario de registro
+│   ├── inventory.html      # Página de inventario
+│   ├── users.html          # Gestión de usuarios
+│   ├── reports.html        # Reportes
+│   └── perfil.html         # Perfil de usuario
+├── img/
+│   └── fpfclogo.jpg        # Logo del sistema
+├── styles.css              # Estilos adicionales
+├── script.js               # Scripts globales
+└── README.md               # Este archivo
+```
 
 ## Instalación y Uso
 
-### Requisitos
-- Navegador web moderno
-- Servidor web local (opcional, para desarrollo)
+1. Clonar o descargar el repositorio
+2. Abrir `pages/dashboard.html` en un navegador web
+3. El sistema está listo para usar
 
-### Instalación
-1. Clona o descarga el proyecto
-2. Abre `pages/index.html` en tu navegador
-3. Usa las credenciales de prueba:
-   - **Usuario**: cualquier email válido
-   - **Contraseña**: `12345678`
+## Notas de Desarrollo
 
-### Desarrollo
-- El proyecto está estructurado para facilitar el desarrollo
-- Cada página tiene su propio JavaScript para funcionalidad específica
-- `script.js` contiene funciones comunes reutilizables
-- Los estilos siguen la guía de diseño de FPFC
+- El sistema utiliza localStorage para almacenar datos temporalmente
+- En producción, se recomienda implementar una base de datos real
+- El formulario está diseñado como acordeón para mejor organización
+- La primera sección (Información Básica) está abierta por defecto
+- El sistema soporta múltiples idiomas (principalmente español)
 
-## Características Técnicas
+## Funcionalidades Futuras
 
-### Responsive Design
-- Diseño adaptable a móviles, tablets y desktop
-- Breakpoints optimizados para diferentes tamaños de pantalla
-- Navegación intuitiva en dispositivos móviles
-
-### Accesibilidad
-- Etiquetas semánticas HTML5
-- Contraste de colores optimizado
-- Navegación por teclado
-- Textos alternativos para imágenes
-
-### Performance
-- Carga lazy de recursos
-- Optimización de CSS y JavaScript
-- Uso eficiente de Tailwind CSS
-
-## Estructura de Datos
-
-### Usuario
-```javascript
-{
-  id: number,
-  nombre: string,
-  email: string,
-  rol: "Administrador" | "Editor" | "Visualizador",
-  estado: "Activo" | "Inactivo",
-  createdAt: string
-}
-```
-
-### Inventario
-```javascript
-{
-  id: number,
-  nombre: string,
-  año: string,
-  material: string,
-  autor: string,
-  estado: string,
-  fecha: string,
-  notas: string
-}
-```
-
-## Funciones JavaScript Principales
-
-### Autenticación
-- `login(username, password)`: Autentica al usuario
-- `logout()`: Cierra la sesión
-- `checkAuthStatus()`: Verifica el estado de autenticación
-
-### Gestión de Datos
-- `addUser(userData)`: Agrega nuevo usuario
-- `getUsers()`: Obtiene lista de usuarios
-- `generateReport(fields, options)`: Genera reporte
-
-### Utilidades
-- `showNotification(message, type)`: Muestra notificaciones
-- `confirmAction(message)`: Solicita confirmación del usuario
-
-## Personalización
-
-### Colores
-El proyecto utiliza la paleta de colores de FPFC:
-- **Primario**: `#c39f3c` (Dorado)
-- **Secundario**: `#8b7e5b` (Marrón claro)
-- **Fondo**: `#fbfaf9` (Beige muy claro)
-- **Texto**: `#191610` (Negro suave)
-
-### Estilos
-- Los estilos siguen las guías de diseño de FPFC
-- Uso consistente de Tailwind CSS
-- Componentes reutilizables y modulares
-
-## Próximas Mejoras
-
-- [ ] Integración con base de datos real
-- [ ] API REST para operaciones CRUD
-- [ ] Sistema de permisos avanzado
-- [ ] Historial de cambios
-- [ ] Backup automático de datos
-- [ ] Exportación a formatos adicionales
-- [ ] Dashboard con gráficos y estadísticas
-- [ ] Sistema de notificaciones en tiempo real
+- Integración con base de datos
+- Sistema de autenticación y autorización
+- Búsqueda y filtros avanzados
+- Exportación de datos
+- Backup automático
+- API REST para integración con otros sistemas
 
 ## Soporte
 
-Para soporte técnico o preguntas sobre el proyecto, contacta al equipo de desarrollo de FPFC.
-
----
-
-**FPFC - Fundación Patrimonio Fílmico Colombiano**
-*Sistema de Archivos v1.0*
+Para soporte técnico o preguntas sobre el sistema, contactar al equipo de desarrollo del Archivo Nacional.

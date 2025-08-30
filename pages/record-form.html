@@ -1,0 +1,755 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Form record</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#fbfaf9] group/design-root overflow-x-hidden" style='font-family: "Work Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1efe9] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#191610]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#191610] text-lg font-bold leading-tight tracking-[-0.015em]">Archivo Nacional</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#191610] text-sm font-medium leading-normal" href="#">Inicio</a>
+              <a class="text-[#191610] text-sm font-medium leading-normal" href="#">Inventario</a>
+              <a class="text-[#191610] text-sm font-medium leading-normal" href="#">Usuarios</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f1efe9] text-[#191610] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#191610]" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-boLO4j1AgSNrekmyBxlH6cW1SCXsjj7dAoKs5iIkISJkPldHgerpMyf1OKmXx2CFn5lGJSYosu8DLewR32jyI6t48DmJtVE82rr0-6abh_eTB2Rp-xQOF_98g3-I4StCQwI-EC48vQGyPvdRDUoYSJ-cufuqji3GYkSgqYD5N-Eqjlr82fNlQzpj3tWB8jasvxjXWAmifFHrOaw39wjb6SJl1AcXHNwcZPHq3h4fFf81-Mmb-lfHIRmBmd0Iznz9sSbrECna_9-u");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#191610] tracking-light text-[32px] font-bold leading-tight min-w-72">Crear/Editar Registro de Archivo</p>
+            </div>
+            <div class="flex flex-col p-4 gap-3">
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group" open="">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Información Básica (0/8)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="grid grid-cols-2 gap-4 py-4">
+                  <div class="col-span-2">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">IMAGEN MINIATURA</label>
+                    <input type="file" accept="image/*" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">CÓDIGO</label>
+                    <input type="number" id="codigo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">TÍTULO</label>
+                    <input type="text" id="titulo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">AÑO</label>
+                    <select id="anio" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar año</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">PAÍS</label>
+                    <select id="pais" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar país</option>
+                      <option value="Colombia">Colombia</option>
+                      <option value="México">México</option>
+                      <option value="Argentina">Argentina</option>
+                      <option value="Brasil">Brasil</option>
+                      <option value="Chile">Chile</option>
+                      <option value="Perú">Perú</option>
+                      <option value="Venezuela">Venezuela</option>
+                      <option value="Ecuador">Ecuador</option>
+                      <option value="Bolivia">Bolivia</option>
+                      <option value="Paraguay">Paraguay</option>
+                      <option value="Uruguay">Uruguay</option>
+                      <option value="España">España</option>
+                      <option value="Francia">Francia</option>
+                      <option value="Italia">Italia</option>
+                      <option value="Alemania">Alemania</option>
+                      <option value="Reino Unido">Reino Unido</option>
+                      <option value="Portugal">Portugal</option>
+                      <option value="Países Bajos">Países Bajos</option>
+                      <option value="Bélgica">Bélgica</option>
+                      <option value="Estados Unidos">Estados Unidos</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">EMPRESA PRODUCTORA</label>
+                    <select id="empresa" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar empresa</option>
+                      <option value="Caracol Televisión">Caracol Televisión</option>
+                      <option value="RCN Televisión">RCN Televisión</option>
+                      <option value="Canal 13">Canal 13</option>
+                      <option value="Señal Colombia">Señal Colombia</option>
+                      <option value="RTVC">RTVC</option>
+                      <option value="Producciones PUNCH">Producciones PUNCH</option>
+                      <option value="Dynamo">Dynamo</option>
+                      <option value="Fox Telecolombia">Fox Telecolombia</option>
+                      <option value="Cine Colombia">Cine Colombia</option>
+                      <option value="Proimágenes">Proimágenes</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">DIRECTOR/A</label>
+                    <input type="text" id="director" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">DURACIÓN</label>
+                    <input type="time" id="duracion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">ACTUAL</label>
+                    <input type="number" id="actual" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">ANTIGUO</label>
+                    <input type="number" id="antiguo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Identificación y Características del Material (0/10)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="grid grid-cols-2 gap-4 py-4">
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">IMAGEN</label>
+                    <input type="text" id="imagen" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">SONIDO</label>
+                    <input type="text" id="sonido" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div class="col-span-2">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">TIPO DE MATERIAL</label>
+                    <div class="grid grid-cols-3 gap-4">
+                      <label class="flex items-center">
+                        <input type="checkbox" id="negativo" class="mr-2">
+                        <span class="text-sm text-[#191610]">NEGATIVO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="positivo" class="mr-2">
+                        <span class="text-sm text-[#191610]">POSITIVO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="reversible" class="mr-2">
+                        <span class="text-sm text-[#191610]">REVERSIBLE</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="blanco" class="mr-2">
+                        <span class="text-sm text-[#191610]">BLANCO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="negro" class="mr-2">
+                        <span class="text-sm text-[#191610]">NEGRO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="color" class="mr-2">
+                        <span class="text-sm text-[#191610]">COLOR</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Producción y Créditos (0/5)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="py-4">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">PRODUCTOR EJECUTIVO</label>
+                      <input type="text" id="productorEjecutivo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">PRODUCTOR ASOCIADO</label>
+                      <input type="text" id="productorAsociado" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">GUIONISTA</label>
+                      <input type="text" id="guionista" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">FOTÓGRAFO</label>
+                      <input type="text" id="fotografo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">EDITOR</label>
+                      <input type="text" id="editor" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Soporte Actual (0/3)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="grid grid-cols-2 gap-4 py-4">
+                  <div class="col-span-2">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">TIPO DE SOPORTE</label>
+                    <div class="grid grid-cols-5 gap-4">
+                      <label class="flex items-center">
+                        <input type="checkbox" id="filmico" class="mr-2">
+                        <span class="text-sm text-[#191610]">FÍLMICO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="magnetico" class="mr-2">
+                        <span class="text-sm text-[#191610]">MAGNÉTICO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="optico" class="mr-2">
+                        <span class="text-sm text-[#191610]">ÓPTICO</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="digital" class="mr-2">
+                        <span class="text-sm text-[#191610]">DIGITAL</span>
+                      </label>
+                      <label class="flex items-center">
+                        <input type="checkbox" id="restaurado" class="mr-2">
+                        <span class="text-sm text-[#191610]">RESTAURADO</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">FECHA RESTAURACIÓN</label>
+                    <input type="date" id="fechaRestauracion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">RESOLUCIÓN CÓDEC</label>
+                    <select id="resolucionCodec" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar resolución</option>
+                      <option value="4K">4K (3840x2160)</option>
+                      <option value="2K">2K (2048x1080)</option>
+                      <option value="1080p">1080p (1920x1080)</option>
+                      <option value="720p">720p (1280x720)</option>
+                      <option value="480p">480p (854x480)</option>
+                      <option value="H.264">H.264</option>
+                      <option value="H.265">H.265</option>
+                      <option value="ProRes">ProRes</option>
+                      <option value="DNxHD">DNxHD</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">PESO</label>
+                    <div class="flex gap-2">
+                      <input type="number" id="peso" class="flex-1 p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">KG</button>
+                      <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">Grs</button>
+                      <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">Lbs</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">ASPECT RATIO</label>
+                    <select id="aspectRatio" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar ratio</option>
+                      <option value="16:9">16:9</option>
+                      <option value="4:3">4:3</option>
+                      <option value="21:9">21:9</option>
+                      <option value="1.85:1">1.85:1</option>
+                      <option value="2.35:1">2.35:1</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">FPS</label>
+                    <select id="fps" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <option value="">Seleccionar FPS</option>
+                      <option value="24">24 fps</option>
+                      <option value="25">25 fps</option>
+                      <option value="30">30 fps</option>
+                      <option value="50">50 fps</option>
+                      <option value="60">60 fps</option>
+                      <option value="120">120 fps</option>
+                    </select>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Historial de pH (0/2)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="py-4">
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">NUEVO REGISTRO DE pH</label>
+                    <input type="text" id="nuevoPh" placeholder="Ingrese el valor de pH" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">HISTORIAL DE REGISTROS</label>
+                    <table class="w-full border border-[#e3dfd4] rounded-lg">
+                      <thead class="bg-[#f1efe9]">
+                        <tr>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Valor pH</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Fecha</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Usuario</th>
+                        </tr>
+                      </thead>
+                      <tbody id="phTableBody">
+                        <tr class="border-t border-[#e3dfd4]">
+                          <td class="px-4 py-2 text-sm text-[#191610]">7.2</td>
+                          <td class="px-4 py-2 text-sm text-[#191610]">15/01/2024</td>
+                          <td class="px-4 py-2 text-sm text-[#191610]">Admin</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Ubicación y Almacenamiento (0/4)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="py-4">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">TIPO DE UBICACIÓN</label>
+                      <select id="tipoUbicacion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar tipo</option>
+                        <option value="Signatura">Signatura</option>
+                        <option value="Boveda">Bóveda</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">CÓDIGO DE UBICACIÓN</label>
+                      <input type="text" id="codigoUbicacion" placeholder="Ej: SIG-001, BOV-A-12" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Descripción y Materiales Relacionados (0/2)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="py-4">
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">SINOPSIS</label>
+                    <textarea id="sinopsis" rows="4" placeholder="Ingrese la sinopsis del material..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white resize-none"></textarea>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">CRÉDITOS</label>
+                    <div class="grid grid-cols-2 gap-4">
+                      <input type="text" id="nombrePersona" placeholder="Nombre de la persona" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      <select id="rolPersona" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar rol</option>
+                        <option value="Actor">Actor</option>
+                        <option value="Producción">Producción</option>
+                        <option value="Escritor">Escritor</option>
+                        <option value="Director">Director</option>
+                        <option value="Fotógrafo">Fotógrafo</option>
+                        <option value="Editor">Editor</option>
+                        <option value="Músico">Músico</option>
+                        <option value="Diseñador">Diseñador</option>
+                      </select>
+                    </div>
+                    <button type="button" onclick="agregarCredito()" class="mt-2 px-4 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">Agregar Crédito</button>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-[#191610] mb-2">LISTA DE CRÉDITOS</label>
+                    <table class="w-full border border-[#e3dfd4] rounded-lg">
+                      <thead class="bg-[#f1efe9]">
+                        <tr>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Nombre</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Rol</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody id="creditosTableBody">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
+              <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#191610] text-sm font-medium leading-normal">Adjuntos (0/1)</p>
+                  <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <div class="py-4">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">GUIÓN</label>
+                      <input type="text" id="guion" placeholder="Ruta o referencia al guión" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div class="col-span-2">
+                      <label class="block text-sm font-medium text-[#191610] mb-2">MATERIALES ADICIONALES</label>
+                      <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center">
+                          <input type="checkbox" id="fotografias" class="mr-2">
+                          <span class="text-sm text-[#191610]">FOTOGRAFÍAS</span>
+                        </label>
+                        <label class="flex items-center">
+                          <input type="checkbox" id="cartel" class="mr-2">
+                          <span class="text-sm text-[#191610]">CARTEL</span>
+                        </label>
+                        <label class="flex items-center">
+                          <input type="checkbox" id="sonidoMusica" class="mr-2">
+                          <span class="text-sm text-[#191610]">SONIDO (MÚSICA)</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">OBSERVACIONES</label>
+                    <textarea id="observaciones" rows="3" placeholder="Ingrese observaciones adicionales..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white resize-none"></textarea>
+                  </div>
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">HISTORIAL DE OBSERVACIONES</label>
+                    <table class="w-full border border-[#e3dfd4] rounded-lg">
+                      <thead class="bg-[#f1efe9]">
+                        <tr>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Observación</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Usuario</th>
+                          <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Fecha</th>
+                        </tr>
+                      </thead>
+                      <tbody id="observacionesTableBody">
+                        <tr class="border-t border-[#e3dfd4]">
+                          <td class="px-4 py-2 text-sm text-[#191610]">Material en buen estado</td>
+                          <td class="px-4 py-2 text-sm text-[#191610]">Admin</td>
+                          <td class="px-4 py-2 text-sm text-[#191610]">15/01/2024</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-[#191610] mb-2">LINK KOHA</label>
+                    <input type="url" id="linkKoha" placeholder="https://..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                  </div>
+                </div>
+              </details>
+            </div>
+            <div class="flex justify-stretch">
+              <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
+                <button
+                  onclick="guardarBorrador()"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1efe9] text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Guardar Borrador</span>
+                </button>
+                <button
+                  onclick="guardarYCerrar()"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f3ecd8] text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Guardar y Cerrar</span>
+                </button>
+                <button
+                  onclick="window.close()"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-transparent text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Cancelar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Array to store credits
+      let creditos = [];
+      let currentRecordId = null;
+
+      // Function to add credit
+      function agregarCredito() {
+        const nombre = document.getElementById('nombrePersona').value;
+        const rol = document.getElementById('rolPersona').value;
+        
+        if (nombre && rol) {
+          const credito = {
+            id: Date.now(),
+            nombre: nombre,
+            rol: rol
+          };
+          
+          creditos.push(credito);
+          actualizarTablaCreditos();
+          
+          // Clear inputs
+          document.getElementById('nombrePersona').value = '';
+          document.getElementById('rolPersona').value = '';
+        } else {
+          alert('Por favor complete todos los campos');
+        }
+      }
+
+      // Function to update credits table
+      function actualizarTablaCreditos() {
+        const tbody = document.getElementById('creditosTableBody');
+        tbody.innerHTML = '';
+        
+        creditos.forEach(credito => {
+          const row = document.createElement('tr');
+          row.className = 'border-t border-[#e3dfd4]';
+          row.innerHTML = `
+            <td class="px-4 py-2 text-sm text-[#191610]">${credito.nombre}</td>
+            <td class="px-4 py-2 text-sm text-[#191610]">${credito.rol}</td>
+            <td class="px-4 py-2 text-sm text-[#191610]">
+              <button onclick="eliminarCredito(${credito.id})" class="px-2 py-1 bg-red-500 text-white rounded text-xs">Eliminar</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      // Function to remove credit
+      function eliminarCredito(id) {
+        creditos = creditos.filter(c => c.id !== id);
+        actualizarTablaCreditos();
+      }
+
+      // Function to save draft
+      function guardarBorrador() {
+        const formData = obtenerDatosFormulario();
+        formData.estado = 'borrador';
+        guardarRegistro(formData);
+      }
+
+      // Function to save and close
+      function guardarYCerrar() {
+        const formData = obtenerDatosFormulario();
+        formData.estado = 'completado';
+        guardarRegistro(formData);
+        window.close();
+      }
+
+      // Function to get form data
+      function obtenerDatosFormulario() {
+        return {
+          id: currentRecordId || Date.now(),
+          codigo: document.getElementById('codigo').value,
+          titulo: document.getElementById('titulo').value,
+          anio: document.getElementById('anio').value,
+          pais: document.getElementById('pais').value,
+          empresa: document.getElementById('empresa').value,
+          director: document.getElementById('director').value,
+          duracion: document.getElementById('duracion').value,
+          actual: document.getElementById('actual').value,
+          antiguo: document.getElementById('antiguo').value,
+          productorEjecutivo: document.getElementById('productorEjecutivo').value,
+          productorAsociado: document.getElementById('productorAsociado').value,
+          guionista: document.getElementById('guionista').value,
+          fotografo: document.getElementById('fotografo').value,
+          editor: document.getElementById('editor').value,
+          imagen: document.getElementById('imagen').value,
+          sonido: document.getElementById('sonido').value,
+          negativo: document.getElementById('negativo').checked,
+          positivo: document.getElementById('positivo').checked,
+          reversible: document.getElementById('reversible').checked,
+          blanco: document.getElementById('blanco').checked,
+          negro: document.getElementById('negro').checked,
+          color: document.getElementById('color').checked,
+          filmico: document.getElementById('filmico').checked,
+          magnetico: document.getElementById('magnetico').checked,
+          optico: document.getElementById('optico').checked,
+          digital: document.getElementById('digital').checked,
+          restaurado: document.getElementById('restaurado').checked,
+          fechaRestauracion: document.getElementById('fechaRestauracion').value,
+          resolucionCodec: document.getElementById('resolucionCodec').value,
+          peso: document.getElementById('peso').value,
+          aspectRatio: document.getElementById('aspectRatio').value,
+          fps: document.getElementById('fps').value,
+          nuevoPh: document.getElementById('nuevoPh').value,
+          tipoUbicacion: document.getElementById('tipoUbicacion').value,
+          codigoUbicacion: document.getElementById('codigoUbicacion').value,
+          sinopsis: document.getElementById('sinopsis').value,
+          creditos: creditos,
+          guion: document.getElementById('guion').value,
+          fotografias: document.getElementById('fotografias').checked,
+          cartel: document.getElementById('cartel').checked,
+          sonidoMusica: document.getElementById('sonidoMusica').checked,
+          observaciones: document.getElementById('observaciones').value,
+          linkKoha: document.getElementById('linkKoha').value,
+          fechaCreacion: new Date().toISOString()
+        };
+      }
+
+      // Function to save record
+      function guardarRegistro(data) {
+        // Save to localStorage for demo purposes
+        // In a real application, this would be an API call
+        const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+        
+        if (currentRecordId) {
+          // Update existing record
+          const index = registros.findIndex(r => r.id === currentRecordId);
+          if (index !== -1) {
+            registros[index] = data;
+          }
+        } else {
+          // Add new record
+          registros.push(data);
+        }
+        
+        localStorage.setItem('registros', JSON.stringify(registros));
+        
+        // Notify parent window if this is opened as a popup
+        if (window.opener) {
+          window.opener.postMessage({
+            type: 'RECORD_SAVED',
+            data: data
+          }, '*');
+        }
+        
+        alert('Registro guardado exitosamente');
+      }
+
+      // Function to load record data for editing
+      function cargarRegistro(id) {
+        const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+        const registro = registros.find(r => r.id === id);
+        
+        if (registro) {
+          currentRecordId = registro.id;
+          document.getElementById('codigo').value = registro.codigo || '';
+          document.getElementById('titulo').value = registro.titulo || '';
+          document.getElementById('anio').value = registro.anio || '';
+          document.getElementById('pais').value = registro.pais || '';
+          document.getElementById('empresa').value = registro.empresa || '';
+          document.getElementById('director').value = registro.director || '';
+          document.getElementById('duracion').value = registro.duracion || '';
+          document.getElementById('actual').value = registro.actual || '';
+          document.getElementById('antiguo').value = registro.antiguo || '';
+          document.getElementById('productorEjecutivo').value = registro.productorEjecutivo || '';
+          document.getElementById('productorAsociado').value = registro.productorAsociado || '';
+          document.getElementById('guionista').value = registro.guionista || '';
+          document.getElementById('fotografo').value = registro.fotografo || '';
+          document.getElementById('editor').value = registro.editor || '';
+          document.getElementById('imagen').value = registro.imagen || '';
+          document.getElementById('sonido').value = registro.sonido || '';
+          document.getElementById('negativo').checked = registro.negativo || false;
+          document.getElementById('positivo').checked = registro.positivo || false;
+          document.getElementById('reversible').checked = registro.reversible || false;
+          document.getElementById('blanco').checked = registro.blanco || false;
+          document.getElementById('negro').checked = registro.negro || false;
+          document.getElementById('color').checked = registro.color || false;
+          document.getElementById('filmico').checked = registro.filmico || false;
+          document.getElementById('magnetico').checked = registro.magnetico || false;
+          document.getElementById('optico').checked = registro.optico || false;
+          document.getElementById('digital').checked = registro.digital || false;
+          document.getElementById('restaurado').checked = registro.restaurado || false;
+          document.getElementById('fechaRestauracion').value = registro.fechaRestauracion || '';
+          document.getElementById('resolucionCodec').value = registro.resolucionCodec || '';
+          document.getElementById('peso').value = registro.peso || '';
+          document.getElementById('aspectRatio').value = registro.aspectRatio || '';
+          document.getElementById('fps').value = registro.fps || '';
+          document.getElementById('nuevoPh').value = registro.nuevoPh || '';
+          document.getElementById('tipoUbicacion').value = registro.tipoUbicacion || '';
+          document.getElementById('codigoUbicacion').value = registro.codigoUbicacion || '';
+          document.getElementById('sinopsis').value = registro.sinopsis || '';
+          document.getElementById('guion').value = registro.guion || '';
+          document.getElementById('fotografias').checked = registro.fotografias || false;
+          document.getElementById('cartel').checked = registro.cartel || false;
+          document.getElementById('sonidoMusica').checked = registro.sonidoMusica || false;
+          document.getElementById('observaciones').value = registro.observaciones || '';
+          document.getElementById('linkKoha').value = registro.linkKoha || '';
+          
+          if (registro.creditos) {
+            creditos = registro.creditos;
+            actualizarTablaCreditos();
+          }
+        }
+      }
+
+      // Check if we're editing an existing record
+      window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const recordId = urlParams.get('id');
+        
+        if (recordId) {
+          cargarRegistro(parseInt(recordId));
+        }
+      });
+
+      // Handle messages from parent window
+      window.addEventListener('message', function(event) {
+        if (event.data.type === 'LOAD_RECORD') {
+          cargarRegistro(event.data.id);
+        }
+      });
+    </script>
+  </body>
+</html>

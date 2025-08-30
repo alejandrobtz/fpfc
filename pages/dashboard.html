@@ -123,9 +123,7 @@
             class="layout-content-container flex flex-col max-w-[960px] flex-1"
           >
             <div class="flex flex-wrap justify-between gap-3 p-4">
-              <p
-                class="text-[#191710] tracking-light text-[32px] font-bold leading-tight min-w-72"
-              >
+              <p class="text-[#191710] tracking-light text-[32px] font-bold leading-tight min-w-72">
                 Panel de Control
               </p>
               <div class="relative">
@@ -327,11 +325,22 @@
                 </div>
               </div>
             </div>
-            <h2
-              class="text-[#191710] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-            >
-              Artículos Recientes
-            </h2>
+            <div class="flex justify-between items-center">
+              <h2
+                class="text-[#191710] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+              >
+                Artículos Recientes
+              </h2>
+              <button
+                onclick="abrirFormulario()"
+                class="h-10 flex items-center gap-2 px-2 py-3 bg-[#f3ecd8] text-[#191610] rounded-full text-sm font-bold hover:bg-[#e8dcc0] transition-colors"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+                Agregar Soporte
+              </button>
+            </div>
             <div class="px-4 py-3 @container">
               <div
                 class="flex overflow-hidden rounded-xl border border-[#e3dfd3] bg-[#fbfaf9]"
@@ -358,6 +367,11 @@
                         class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 px-4 py-3 text-left text-[#191710] w-60 text-sm font-medium leading-normal"
                       >
                         Estado
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-[#191710] w-32 text-sm font-medium leading-normal"
+                      >
+                        Acciones
                       </th>
                     </tr>
                   </thead>
@@ -565,6 +579,157 @@
           window.location.href = './index.html';
         }
       }
+
+      // Function to open the record form
+      function abrirFormulario() {
+        const popup = window.open('./record-form.html', 'RecordForm', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+        
+        // Listen for messages from the popup
+        window.addEventListener('message', function(event) {
+          if (event.data.type === 'RECORD_SAVED') {
+            // Refresh the table with new data
+            actualizarTablaRegistros();
+            popup.close();
+          }
+        });
+      }
+
+      // Function to edit a record
+      function editarRegistro(id) {
+        const popup = window.open(`./record-form.html?id=${id}`, 'RecordForm', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+        
+        // Listen for messages from the popup
+        window.addEventListener('message', function(event) {
+          if (event.data.type === 'RECORD_SAVED') {
+            // Refresh the table with updated data
+            actualizarTablaRegistros();
+            popup.close();
+          }
+        });
+      }
+
+      // Function to delete a record
+      function eliminarRegistro(id) {
+        if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+          // In a real application, this would be an API call
+          const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+          const registrosFiltrados = registros.filter(r => r.id !== id);
+          localStorage.setItem('registros', JSON.stringify(registrosFiltrados));
+          
+          // Refresh the table
+          actualizarTablaRegistros();
+        }
+      }
+
+      // Function to update the records table
+      function actualizarTablaRegistros() {
+        const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+        const tbody = document.querySelector('tbody');
+        
+        if (tbody && registros.length > 0) {
+          // Clear existing rows
+          tbody.innerHTML = '';
+          
+          // Add new rows
+          registros.forEach(registro => {
+            const row = document.createElement('tr');
+            row.className = 'border-t border-t-[#e3dfd3]';
+            
+            // Determine format based on record data
+            let formato = 'Documento';
+            if (registro.imagen && registro.imagen.includes('foto')) formato = 'Foto';
+            else if (registro.sonido && registro.sonido.includes('audio')) formato = 'Audio';
+            else if (registro.fps) formato = 'Video';
+            else if (registro.negativo || registro.positivo) formato = 'Película';
+            
+            row.innerHTML = `
+              <td class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-120 h-[72px] px-4 py-2 w-[400px] text-[#191710] text-sm font-normal leading-normal">
+                ${registro.titulo || 'Sin título'}
+              </td>
+              <td class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8c7f5a] text-sm font-normal leading-normal">
+                ${registro.codigo || 'ARC-' + String(registro.id).padStart(3, '0')}
+              </td>
+              <td class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-360 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full">
+                  <span class="truncate">${formato}</span>
+                </button>
+              </td>
+              <td class="table-b10431eb-837a-40cb-aaf4-f38f42e19eb5-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f1efe9] text-[#191710] text-sm font-medium leading-normal w-full">
+                  <span class="truncate">${registro.estado || 'Pendiente'}</span>
+                </button>
+              </td>
+              <td class="h-[72px] px-4 py-2 w-32 text-sm font-normal leading-normal">
+                <div class="flex gap-2">
+                  <button onclick="editarRegistro(${registro.id})" class="px-3 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">
+                    Editar
+                  </button>
+                  <button onclick="eliminarRegistro(${registro.id})" class="px-3 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            `;
+            
+            tbody.appendChild(row);
+          });
+        }
+      }
+
+      // Initialize the table with any existing records
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add some sample data if none exists
+        const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+        if (registros.length === 0) {
+          const sampleData = [
+            {
+              id: 1,
+              codigo: 'ARC-001',
+              titulo: 'La Historia de Cartagena',
+              anio: '2020',
+              pais: 'Colombia',
+              empresa: 'Caracol Televisión',
+              director: 'Carlos Mendoza',
+              duracion: '01:30:00',
+              actual: 1,
+              antiguo: 0,
+              estado: 'Procesado',
+              fechaCreacion: '2024-01-15T10:00:00Z'
+            },
+            {
+              id: 2,
+              codigo: 'ARC-002',
+              titulo: 'Documentos de Independencia',
+              anio: '2019',
+              pais: 'Colombia',
+              empresa: 'RCN Televisión',
+              director: 'Ana García',
+              duracion: '00:45:00',
+              actual: 1,
+              antiguo: 0,
+              estado: 'Pendiente',
+              fechaCreacion: '2024-01-14T15:30:00Z'
+            },
+            {
+              id: 3,
+              codigo: 'ARC-003',
+              titulo: 'Colección de Fotos de Gabriel Garcia Marquez',
+              anio: '2018',
+              pais: 'Colombia',
+              empresa: 'Canal 13',
+              director: 'Luis Pérez',
+              duracion: '00:30:00',
+              actual: 1,
+              antiguo: 0,
+              estado: 'Archivado',
+              fechaCreacion: '2024-01-13T09:15:00Z'
+            }
+          ];
+          localStorage.setItem('registros', JSON.stringify(sampleData));
+        }
+        
+        actualizarTablaRegistros();
+      });
     </script>
   </body>
 </html>
