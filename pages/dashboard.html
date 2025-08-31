@@ -555,6 +555,7 @@
           </div>
         </div>
       </div>
+      <support-form-template></support-form-template>
     </div>
 
     <script>
@@ -582,16 +583,9 @@
 
       // Function to open the record form
       function abrirFormulario() {
-        const popup = window.open('./record-form.html', 'RecordForm', 'width=1200,height=800,scrollbars=yes,resizable=yes');
-        
-        // Listen for messages from the popup
-        window.addEventListener('message', function(event) {
-          if (event.data.type === 'RECORD_SAVED') {
-            // Refresh the table with new data
-            actualizarTablaRegistros();
-            popup.close();
-          }
-        });
+        const formComponent = document.querySelector('support-form-template');
+        console.log({formComponent});
+        formComponent.open();
       }
 
       // Function to edit a record
