@@ -555,8 +555,6 @@
           </div>
         </div>
       </div>
-      <support-form-template></support-form-template>
-    </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -583,9 +581,13 @@
 
       // Function to open the record form
       function abrirFormulario() {
-        const formComponent = document.querySelector('support-form-template');
-        console.log({formComponent});
-        formComponent.open();
+        const formComponent = document.querySelector('record-form');
+        if (formComponent && formComponent.open) {
+          console.log('Opening form:', formComponent);
+          formComponent.open();
+        } else {
+          console.error('Record form component not found or not properly loaded');
+        }
       }
 
       // Function to edit a record
@@ -724,6 +726,49 @@
         
         actualizarTablaRegistros();
       });
+    </script>
+    
+    <!-- Include the record form component -->
+    <record-form id="record-form-component"></record-form>
+    
+    <script>
+      // Load the record form component
+      async function loadComponent(){
+            try {
+                const templateResponse = await fetch('./record-form.html');
+                const templateHTML = await templateResponse.text();
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = templateHTML;
+
+                const template = tempDiv.querySelector('#record-form-template');
+                if (template) {
+                    console.log('Template loaded:', template);
+                    document.body.appendChild(template);
+                }
+
+                const script = document.createElement('script');
+                script.src = './record-form.js';
+                script.onload = function() {
+                    console.log('Component loaded successfully');
+                    // Add event listener for form submission
+                    const formComponent = document.querySelector('record-form');
+                    if (formComponent) {
+                        formComponent.addEventListener('record-saved', function(e) {
+                            console.log('Record saved:', e.detail);
+                            // Refresh the table with updated data
+                            actualizarTablaRegistros();
+                        });
+                    }
+                };
+                document.head.appendChild(script);
+
+            } catch (error) {
+                console.error('Error loading component', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponent);
     </script>
   </body>
 </html>
