@@ -1205,6 +1205,14 @@
             </td>
           `;
 
+          // Agregar event listener para hacer clic en la fila
+          row.addEventListener('click', function(e) {
+            // Verificar que no se hizo clic en un botón o enlace
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('button')) {
+              window.location.href = `./detail.html?id=${item.id}`;
+            }
+          });
+
           tbody.appendChild(row);
         });
       }

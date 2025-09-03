@@ -82,15 +82,6 @@
               <p class="text-[#191610] tracking-light text-[32px] font-bold leading-tight min-w-72">
                 Panel de Control
               </p>
-              <button
-                id="agregarSoporteBtn"
-                class="h-10 flex items-center gap-2 px-4 py-2 bg-[#f3ecd8] text-[#191610] rounded-full text-sm font-bold hover:bg-[#e8dcc0] transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
-                </svg>
-                Agregar Soporte
-              </button>
             </div>
             <div class="flex flex-wrap gap-4 p-4">
               <div
@@ -471,18 +462,10 @@
       document.addEventListener('DOMContentLoaded', function() {
         const profileBtn = document.getElementById('profileBtn');
         const profileDropdown = document.getElementById('profileDropdown');
-        const agregarSoporteBtn = document.getElementById('agregarSoporteBtn');
 
         profileBtn.addEventListener('click', function() {
           profileDropdown.classList.toggle('hidden');
         });
-
-        // Add event listener for "Agregar Soporte" button
-        if (agregarSoporteBtn) {
-          agregarSoporteBtn.addEventListener('click', function() {
-            window.open('./record-form.html', 'RecordForm', 'width=1200,height=800,scrollbars=yes,resizable=yes');
-          });
-        }
 
         // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
@@ -496,22 +479,6 @@
         if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
           window.location.href = './index.html';
         }
-      }
-
-
-
-      // Function to edit a record
-      function editarRegistro(id) {
-        const popup = window.open(`./record-form.html?id=${id}`, 'RecordForm', 'width=1200,height=800,scrollbars=yes,resizable=yes');
-        
-        // Listen for messages from the popup
-        window.addEventListener('message', function(event) {
-          if (event.data.type === 'RECORD_SAVED') {
-            // Refresh the table with updated data
-            actualizarTablaRegistros();
-            popup.close();
-          }
-        });
       }
 
       // Function to delete a record
@@ -567,9 +534,6 @@
               </td>
               <td class="h-[72px] px-4 py-2 w-32 text-sm font-normal leading-normal">
                 <div class="flex gap-2">
-                  <button onclick="editarRegistro(${registro.id})" class="px-3 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">
-                    Editar
-                  </button>
                   <button onclick="eliminarRegistro(${registro.id})" class="px-3 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600">
                     Eliminar
                   </button>
@@ -637,7 +601,5 @@
         actualizarTablaRegistros();
       });
     </script>
-    
-
   </body>
 </html>
