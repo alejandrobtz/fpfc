@@ -90,7 +90,6 @@ Formulario acordeón con las siguientes secciones:
 - **CSS3**: Estilos con Tailwind CSS
 - **JavaScript**: Funcionalidad del lado del cliente
 - **LocalStorage**: Almacenamiento temporal de datos
-- **Ventanas emergentes**: Para el formulario de registro
 
 ## Estructura de Archivos
 
@@ -110,29 +109,10 @@ fpfc/
 └── README.md               # Este archivo
 ```
 
-## Instalación y Uso
-
-1. Clonar o descargar el repositorio
-2. Abrir `pages/dashboard.html` en un navegador web
-3. El sistema está listo para usar
 
 ## Notas de Desarrollo
 
 - El sistema utiliza localStorage para almacenar datos temporalmente
-- En producción, se recomienda implementar una base de datos real
 - El formulario está diseñado como acordeón para mejor organización
 - La primera sección (Información Básica) está abierta por defecto
-- El sistema soporta múltiples idiomas (principalmente español)
-
-## Funcionalidades Futuras
-
-- Integración con base de datos
-- Sistema de autenticación y autorización
-- Búsqueda y filtros avanzados
-- Exportación de datos
-- Backup automático
-- API REST para integración con otros sistemas
-
-## Soporte
-
-Para soporte técnico o preguntas sobre el sistema, contactar al equipo de desarrollo del Archivo Nacional.
+- Este proyecto es un mock visual, principalmente HTML y CSS para dar una idea de como seria el look and feel del proyecto.
