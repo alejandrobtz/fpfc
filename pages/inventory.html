@@ -88,7 +88,18 @@
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-[#191610] tracking-light text-[32px] font-bold leading-tight min-w-72">Buscar Películas</p></div>
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#191610] tracking-light text-[32px] font-bold leading-tight min-w-72">Buscar Películas</p>
+              <button
+                id="agregarSoporteBtn"
+                class="h-10 flex items-center gap-2 px-4 py-2 bg-[#f3ecd8] text-[#191610] rounded-full text-sm font-bold hover:bg-[#e8dcc0] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+                Agregar Soporte
+              </button>
+            </div>
             <div class="px-4 py-3">
               <label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
@@ -156,6 +167,7 @@
                         Material
                       </th>
                       <th class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-536 px-4 py-3 text-left text-[#191610] w-[400px] text-sm font-medium leading-normal">Autor</th>
+                      <th class="px-4 py-3 text-left text-[#191610] w-32 text-sm font-medium leading-normal">Acciones</th>
                     </tr>
                   </thead>
                   <tbody id="inventoryTableBody">
@@ -335,118 +347,644 @@
       </div>
     </div>
 
-    <script>
-      // Mock data for inventory
-      const inventoryData = [
-        {
-          id: 1,
-          nombre: "El Eco Silencioso",
-          año: "1968",
-          material: "Nitrato de Celulosa",
-          autor: "Elías Thorne",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAObrOagz1XXEvx6uQKaX58w7z9zKuTlbpaFOTcCyXT5UjlttAMks77y6mgEk_puDm-CI25wZAsB4B5TA6dncjemiMxw4JUzmC7mb3Rx60KRZKTF20SqHa_wFKDt7yxljtNXJALf6MWkr9Eh4G-fNBm7Oy0FD60vVO9sU9DyrkEefoHvpQavSftjXtkTMrTxDs2M73-JHp985F6wBqcofurGICtm3tDS0Q5tLICCALhM6M-_-GTZDeCsb6m0upyLjkRKptuHG4cQsaK"
-        },
-        {
-          id: 2,
-          nombre: "Memorias de un Viaje",
-          año: "2018",
-          material: "35mm",
-          autor: "Carlos Rivas",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW_3orOsWoHHdST-dZinjKVs1yDo1aagTRb45Kj8gWT-1Kx-chb6cwVhpG5dSDEt312WnpvhtgXExmRXQciLdEDGPb172GZTOFI9iXHZw2-IL1BRXHz7WT78YEsGhwcgGJQuScS-P4rWk5_x_lopi569EikI9lKOWr4liPCxBBwZ3Km9TkqTYCJAOC0guiFvzGto_8m_C56KhfRSLs4REkcLokW7cVQlrpKLj1Z0o5UiwqXUwacXrexCkFzHeiNdyONR_kPgoHahjJ"
-        },
-        {
-          id: 3,
-          nombre: "La Ciudad Perdida",
-          año: "2020",
-          material: "Digital",
-          autor: "Ana Torres",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAlsUgsNkEJNWpKLpHks9GfuyBEyq9SA-f2yHmAeGU6NEEPJOMJpJ1Hsl-NNvrWKK9kM0OkVqO55nhKWIKwFGJcmtaHVExHSvjdUxiMt9K1yqh59s6eKPPewMc3rVb3twuhgMDRsVdhMIzb5U-IDmW7CGAKiUv_82Rq-A_htxjC-VF9zbJoqwM2oiokWTVez09LAi7uApn3Oo6OKsTbKfyyXWACaKueoA23f2ffXk_TlOQweCtFJIrgAwEnWrGML-kIbv2_iBnioBK"
-        },
-        {
-          id: 4,
-          nombre: "Reflejos en el Agua",
-          año: "2015",
-          material: "16mm",
-          autor: "Luis García",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCT60_X61rPQGKD8w1FNpzbuSOeSUwEYiUDgeADuAW_My-2pNGb81xi5EFEJSAGVS1Mfygq4LSvkzfgU-2S7sF8JWXTkKFdvmb6zO8q9D9CostoPXfZsrdbiY5lXeeQQOEBgoj_ThlXERExBm1EVQn6C7zuelZPG_5YBq-QSZWb1eoiOzRTtCsgm-zgs_DFiJ4HlkkX3AWiF07qJo-A6kQ3q7CZW6SUZ5yn9smeQWIwoe8rkQ0EWKgZXiNktK6Lfv7DKJgzNucgxyP7"
-        },
-        {
-          id: 5,
-          nombre: "Sombras del Pasado",
-          año: "2019",
-          material: "Digital",
-          autor: "Elena Sánchez",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuB079L3TcTRwXERgsxusFd9x3H5KkBMuHnwtwFumvcgV7tTiILdUvErVmXJq2Zxr0NtKWTHKyWkMm9Fge2fqMbLU30ce968ud7cqsyFz15iyAQhyenUgmEh3CSap7emiZc8sfxiYpqNNmmC9iNphtQhZdzSpQTChS0qSM3GWdgSTAzGaUXZosCb0xEz41FZHajT5Wjzle9u9lJDiT5KGEkgKOM-QrdAG3fJ-09O_J4imdtXhlPuu2vX91_UgwyLIiVu9X69ockDmR9n"
-        },
-        {
-          id: 6,
-          nombre: "Un Nuevo Amanecer",
-          año: "2021",
-          material: "35mm",
-          autor: "Javier Pérez",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGQzqcUlCxuVXbrh52BqPf2VBVxBG7hj0lZksFNtpgYH8-nyPu3ghXZ0XylYm0W-ZwYMrvIWHxQ7kO5jl4rpPuSMD_8Pq6-euOYNwmIHYg6J0q2_tjYhlkihkz2Zk1GixEYrvfgCU2u4RWOOkov8MgxH8ZfBNj-FKJsisj-03V52Dw-sgSVpQH9Qax46xjd5xQRE-qMtkreMVIQpkbeTkN_LkIUh9iDLFEHWb0N4te9ZZ7FVYooxL4V4jgko53DGr98ExAr1gf0Igb"
-        },
-        {
-          id: 7,
-          nombre: "El Silencio de la Noche",
-          año: "2017",
-          material: "16mm",
-          autor: "María López",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQnApjeGb2Xp15kjPfyMks5ZlFk6qUG5Bd-ox7KExLOavIaAb9DDl-1bKczbymwWP9MYvezJ_XgUx9FuF9k9EtomRacSLBi9CjAPlpsAxM4ilg59tkOFVAQ8cY4jb5tDVh23oAD1mm18tHRR9eXMPMRtzZSG8IYNEZfc6XPVX4FMJbHr7G-HXkjYqp1K_HxdvrH6Kl7_h_7iY6AfWaiJZQMbzxrAj3r9DydCqwi0SzYw_K0as-fkARv59-4LFWYLCocRxwhb-P96vH"
-        },
-        {
-          id: 8,
-          nombre: "Caminos Cruzados",
-          año: "2023",
-          material: "Digital",
-          autor: "Ricardo Gómez",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuAoi8dMdbd8QSw8j-D1d-zUON_5GfjwpIAnwCWPUIcGh7Xl556IVuIEBXuX1HXcXPyMQANM70ITD0F1f6qvGUfUxhF0oIYTs2JPmQswcTCdzEejr_b91XGjJ2q8-XL11S6B9Mj6cR-Dn9J09y2Iga33HANjdn8DK6TWMgPvfn0T3TdK4g4QI1QMhCZ45utiB6Cdo-qOruK3GR0hTDD3B6hTsazTVOZY4jpxq7x6vtFJOyoVACoxikA_K0649-wi0qDVNm-vCybIjSqX"
-        },
-        {
-          id: 9,
-          nombre: "Sueños de Libertad",
-          año: "2016",
-          material: "35mm",
-          autor: "Isabel Fernández",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4TYZe2LkTGnsBw3vQmADvDzn1gHUBdi9KFwvfD5VcEaIDNGYuoUWxCNqYmOJQ93UfGJBMe2Qqdpfdc4OfiRns0OzHJtNlGwtPIpZQMGRCU4QDyWZHGYWlrQYNmSBDxqVGu4Jub7HCD4LBbGhBk02T2UwAZjHpbnd4AQAaLiB4mi0kAPu1T8t3p7mPPm5BC5LhNHoVhAfZtALkKJMRc5xVVbQOxR1Zf2njHO5ZOadXAFvuiz1aSUwvr-IclwJBFENFw_9-mKzjyzXJ"
-        },
-        {
-          id: 10,
-          nombre: "La Última Estación",
-          año: "2014",
-          material: "16mm",
-          autor: "Daniel Castro",
-          portada: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5T7Qjr61IL0MlHOPmQFbMX-hlE-XoTa544oZcoiDfgOA2qnuungHnflzmFjcD6TKNwHDe0VKRp_44GcwSVpAYX03Ou7lW9gK5S_srUG58mEjqkje5Xmdkwmx6WN2KV0Kg41cL1e56CEIDsElb7m2PE2e9W93cibaGujDBYsKNr5Z7S2agJz2u75GGkG_E0HZXvC6ratsSC71VjWDQ12QRz7mEs3sYU55nIVHnI4R63EZICEILO5m1sbtEP43Cdl9r_k-Jtk4rsgq2"
-        }
-      ];
+    <!-- Record Form Modal -->
+    <div id="recordFormModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl shadow-lg w-full max-w-6xl max-h-[90vh] overflow-y-auto" style='font-family: "Work Sans", "Noto Sans", sans-serif;'>
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-[#191610] text-2xl font-bold">Crear/Editar Registro de Archivo</h2>
+              <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <form id="recordForm">
+              <div class="flex flex-col gap-3">
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group" open>
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Información Básica (0/8)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="grid grid-cols-2 gap-4 py-4">
+                    <div class="col-span-2">
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="miniatura">IMAGEN MINIATURA</label>
+                      <input type="file" id="miniatura" accept="image/*" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="codigo">CÓDIGO</label>
+                      <input type="text" id="codigo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="titulo">TÍTULO</label>
+                      <input type="text" id="titulo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="anio">AÑO</label>
+                      <select id="anio" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar año</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="pais">PAÍS</label>
+                      <select id="pais" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar país</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="México">México</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Perú">Perú</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="España">España</option>
+                        <option value="Francia">Francia</option>
+                        <option value="Italia">Italia</option>
+                        <option value="Alemania">Alemania</option>
+                        <option value="Reino Unido">Reino Unido</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Países Bajos">Países Bajos</option>
+                        <option value="Bélgica">Bélgica</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="empresa">EMPRESA PRODUCTORA</label>
+                      <select id="empresa" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar empresa</option>
+                        <option value="Caracol Televisión">Caracol Televisión</option>
+                        <option value="RCN Televisión">RCN Televisión</option>
+                        <option value="Canal 13">Canal 13</option>
+                        <option value="Señal Colombia">Señal Colombia</option>
+                        <option value="RTVC">RTVC</option>
+                        <option value="Producciones PUNCH">Producciones PUNCH</option>
+                        <option value="Dynamo">Dynamo</option>
+                        <option value="Fox Telecolombia">Fox Telecolombia</option>
+                        <option value="Cine Colombia">Cine Colombia</option>
+                        <option value="Proimágenes">Proimágenes</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="director">DIRECTOR/A</label>
+                      <input type="text" id="director" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="duracion">DURACIÓN</label>
+                      <input type="time" id="duracion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="actual">ACTUAL</label>
+                      <input type="number" id="actual" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="antiguo">ANTIGUO</label>
+                      <input type="number" id="antiguo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Identificación y Características del Material (0/10)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="grid grid-cols-2 gap-4 py-4">
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="imagen">IMAGEN</label>
+                      <input type="text" id="imagen" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="sonido">SONIDO</label>
+                      <input type="text" id="sonido" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div class="col-span-2">
+                      <label class="block text-sm font-medium text-[#191610] mb-2">TIPO DE MATERIAL</label>
+                      <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center" for="negativo">
+                          <input type="checkbox" id="negativo" class="mr-2">
+                          <span class="text-sm text-[#191610]">NEGATIVO</span>
+                        </label>
+                        <label class="flex items-center" for="positivo">
+                          <input type="checkbox" id="positivo" class="mr-2">
+                          <span class="text-sm text-[#191610]">POSITIVO</span>
+                        </label>
+                        <label class="flex items-center" for="reversible">
+                          <input type="checkbox" id="reversible" class="mr-2">
+                          <span class="text-sm text-[#191610]">REVERSIBLE</span>
+                        </label>
+                        <label class="flex items-center" for="blanco">
+                          <input type="checkbox" id="blanco" class="mr-2">
+                          <span class="text-sm text-[#191610]">BLANCO</span>
+                        </label>
+                        <label class="flex items-center" for="negro">
+                          <input type="checkbox" id="negro" class="mr-2">
+                          <span class="text-sm text-[#191610]">NEGRO</span>
+                        </label>
+                        <label class="flex items-center" for="color">
+                          <input type="checkbox" id="color" class="mr-2">
+                          <span class="text-sm text-[#191610]">COLOR</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Producción y Créditos (0/5)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="py-4">
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="productorEjecutivo">PRODUCTOR EJECUTIVO</label>
+                        <input type="text" id="productorEjecutivo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="productorAsociado">PRODUCTOR ASOCIADO</label>
+                        <input type="text" id="productorAsociado" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="guionista">GUIONISTA</label>
+                        <input type="text" id="guionista" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="fotografo">FOTÓGRAFO</label>
+                        <input type="text" id="fotografo" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="editor">EDITOR</label>
+                        <input type="text" id="editor" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Soporte Actual (0/3)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="grid grid-cols-2 gap-4 py-4">
+                    <div class="col-span-2">
+                      <label class="block text-sm font-medium text-[#191610] mb-2">TIPO DE SOPORTE</label>
+                      <div class="grid grid-cols-5 gap-4">
+                        <label class="flex items-center" for="filmico">
+                          <input type="checkbox" id="filmico" class="mr-2">
+                          <span class="text-sm text-[#191610]">FÍLMICO</span>
+                        </label>
+                        <label class="flex items-center" for="magnetico">
+                          <input type="checkbox" id="magnetico" class="mr-2">
+                          <span class="text-sm text-[#191610]">MAGNÉTICO</span>
+                        </label>
+                        <label class="flex items-center" for="optico">
+                          <input type="checkbox" id="optico" class="mr-2">
+                          <span class="text-sm text-[#191610]">ÓPTICO</span>
+                        </label>
+                        <label class="flex items-center" for="digital">
+                          <input type="checkbox" id="digital" class="mr-2">
+                          <span class="text-sm text-[#191610]">DIGITAL</span>
+                        </label>
+                        <label class="flex items-center" for="restaurado">
+                          <input type="checkbox" id="restaurado" class="mr-2">
+                          <span class="text-sm text-[#191610]">RESTAURADO</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="fechaRestauracion">FECHA RESTAURACIÓN</label>
+                      <input type="date" id="fechaRestauracion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="resolucionCodec">RESOLUCIÓN CÓDEC</label>
+                      <select id="resolucionCodec" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar resolución</option>
+                        <option value="4K">4K (3840x2160)</option>
+                        <option value="2K">2K (2048x1080)</option>
+                        <option value="1080p">1080p (1920x1080)</option>
+                        <option value="720p">720p (1280x720)</option>
+                        <option value="480p">480p (854x480)</option>
+                        <option value="H.264">H.264</option>
+                        <option value="H.265">H.265</option>
+                        <option value="ProRes">ProRes</option>
+                        <option value="DNxHD">DNxHD</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="peso">PESO</label>
+                      <div class="flex gap-2">
+                        <input type="number" id="peso" class="flex-1 p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">KG</button>
+                        <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">Grs</button>
+                        <button type="button" class="px-3 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">Lbs</button>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="aspectRatio">ASPECT RATIO</label>
+                      <select id="aspectRatio" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar ratio</option>
+                        <option value="16:9">16:9</option>
+                        <option value="4:3">4:3</option>
+                        <option value="21:9">21:9</option>
+                        <option value="1.85:1">1.85:1</option>
+                        <option value="2.35:1">2.35:1</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="fps">FPS</label>
+                      <select id="fps" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <option value="">Seleccionar FPS</option>
+                        <option value="24">24 fps</option>
+                        <option value="25">25 fps</option>
+                        <option value="30">30 fps</option>
+                        <option value="50">50 fps</option>
+                        <option value="60">60 fps</option>
+                        <option value="120">120 fps</option>
+                      </select>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Historial de pH (0/2)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="py-4">
+                    <div class="mb-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="nuevoPh">NUEVO REGISTRO DE pH</label>
+                      <input type="text" id="nuevoPh" placeholder="Ingrese el valor de pH" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">HISTORIAL DE REGISTROS</label>
+                      <table class="w-full border border-[#e3dfd4] rounded-lg">
+                        <thead class="bg-[#f1efe9]">
+                          <tr>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Valor pH</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Fecha</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Usuario</th>
+                          </tr>
+                        </thead>
+                        <tbody id="phTableBody">
+                          <tr class="border-t border-[#e3dfd4]">
+                            <td class="px-4 py-2 text-sm text-[#191610]">7.2</td>
+                            <td class="px-4 py-2 text-sm text-[#191610]">15/01/2024</td>
+                            <td class="px-4 py-2 text-sm text-[#191610]">Admin</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Ubicación y Almacenamiento (0/4)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="py-4">
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="tipoUbicacion">TIPO DE UBICACIÓN</label>
+                        <select id="tipoUbicacion" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                          <option value="">Seleccionar tipo</option>
+                          <option value="Signatura">Signatura</option>
+                          <option value="Boveda">Bóveda</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="codigoUbicacion">CÓDIGO DE UBICACIÓN</label>
+                        <input type="text" id="codigoUbicacion" placeholder="Ej: SIG-001, BOV-A-12" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Descripción y Materiales Relacionados (0/2)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="py-4">
+                    <div class="mb-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="sinopsis">SINOPSIS</label>
+                      <textarea id="sinopsis" rows="4" placeholder="Ingrese la sinopsis del material..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white resize-none"></textarea>
+                    </div>
+                    <div class="mb-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2">CRÉDITOS</label>
+                      <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="nombrePersona" placeholder="Nombre de la persona" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                        <select id="rolPersona" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                          <option value="">Seleccionar rol</option>
+                          <option value="Actor">Actor</option>
+                          <option value="Producción">Producción</option>
+                          <option value="Escritor">Escritor</option>
+                          <option value="Director">Director</option>
+                          <option value="Fotógrafo">Fotógrafo</option>
+                          <option value="Editor">Editor</option>
+                          <option value="Músico">Músico</option>
+                          <option value="Diseñador">Diseñador</option>
+                        </select>
+                      </div>
+                      <button type="button" id="agregar-credito-btn" class="mt-2 px-4 py-2 bg-[#f1efe9] rounded-lg text-sm font-medium">
+                        Agregar Crédito
+                      </button>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-[#191610] mb-2">LISTA DE CRÉDITOS</label>
+                      <table class="w-full border border-[#e3dfd4] rounded-lg">
+                        <thead class="bg-[#f1efe9]">
+                          <tr>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Nombre</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Rol</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody id="creditosTableBody">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </details>
+                <details class="flex flex-col rounded-xl border border-[#e3dfd4] bg-[#fbfaf9] px-[15px] py-[7px] group">
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#191610] text-sm font-medium leading-normal">Adjuntos (0/1)</p>
+                    <div class="text-[#191610] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <div class="py-4">
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium text-[#191610] mb-2" for="guion">GUIÓN</label>
+                        <input type="text" id="guion" placeholder="Ruta o referencia al guión" class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                      </div>
+                      <div class="col-span-2">
+                        <label class="block text-sm font-medium text-[#191610] mb-2">MATERIALES ADICIONALES</label>
+                        <div class="grid grid-cols-3 gap-4">
+                          <label class="flex items-center" for="fotografias">
+                            <input type="checkbox" id="fotografias" class="mr-2">
+                            <span class="text-sm text-[#191610]">FOTOGRAFÍAS</span>
+                          </label>
+                          <label class="flex items-center" for="cartel">
+                            <input type="checkbox" id="cartel" class="mr-2">
+                            <span class="text-sm text-[#191610]">CARTEL</span>
+                          </label>
+                          <label class="flex items-center" for="sonidoMusica">
+                            <input type="checkbox" id="sonidoMusica" class="mr-2">
+                            <span class="text-sm text-[#191610]">SONIDO (MÚSICA)</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="observaciones">OBSERVACIONES</label>
+                      <textarea id="observaciones" rows="3" placeholder="Ingrese observaciones adicionales..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white resize-none"></textarea>
+                    </div>
+                    <div class="mt-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2">HISTORIAL DE OBSERVACIONES</label>
+                      <table class="w-full border border-[#e3dfd4] rounded-lg">
+                        <thead class="bg-[#f1efe9]">
+                          <tr>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Observación</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Usuario</th>
+                            <th class="px-4 py-2 text-left text-sm font-medium text-[#191610]">Fecha</th>
+                          </tr>
+                        </thead>
+                        <tbody id="observacionesTableBody">
+                          <tr class="border-t border-[#e3dfd4]">
+                            <td class="px-4 py-2 text-sm text-[#191610]">Material en buen estado</td>
+                            <td class="px-4 py-2 text-sm text-[#191610]">Admin</td>
+                            <td class="px-4 py-2 text-sm text-[#191610]">15/01/2024</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="mt-4">
+                      <label class="block text-sm font-medium text-[#191610] mb-2" for="linkKoha">LINK KOHA</label>
+                      <input type="url" id="linkKoha" placeholder="https://..." class="w-full p-2 border border-[#e3dfd4] rounded-lg bg-white">
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </form>
+            
+            <!-- Action Buttons -->
+            <div class="flex justify-end w-full mt-6">
+              <div class="flex gap-3 flex-wrap px-4 py-3">
+                <button
+                  id="save-draft-btn"
+                  type="button"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1efe9] text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Guardar Borrador</span>
+                </button>
+                <button
+                  id="save-btn"
+                  type="button"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f3ecd8] text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Guardar</span>
+                </button>
+                <button
+                  id="cancel-btn"
+                  type="button"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-transparent text-[#191610] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Cancelar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <script>
+      // Global variables
+      let creditos = [];
+      let currentRecordId = null;
       let currentFilter = 'nombre';
-      let filteredData = [...inventoryData];
+      let filteredData = [];
+
+      // Initialize inventory data with detailed structure
+      function initializeInventoryData() {
+        const existingData = JSON.parse(localStorage.getItem('inventoryData') || '[]');
+        if (existingData.length === 0) {
+          // Create sample data with detailed structure
+          const sampleData = [
+            {
+              id: 1,
+              codigo: 'ARC-001',
+              titulo: 'El Eco Silencioso',
+              anio: '1968',
+              pais: 'Colombia',
+              empresa: 'Caracol Televisión',
+              director: 'Elías Thorne',
+              duracion: '01:30:00',
+              actual: 1,
+              antiguo: 0,
+              estado: 'Procesado',
+              imagen: 'Nitrato de Celulosa',
+              sonido: 'Mono',
+              material: 'Nitrato de Celulosa',
+              autor: 'Elías Thorne',
+              portada: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAObrOagz1XXEvx6uQKaX58w7z9zKuTlbpaFOTcCyXT5UjlttAMks77y6mgEk_puDm-CI25wZAsB4B5TA6dncjemiMxw4JUzmC7mb3Rx60KRZKTF20SqHa_wFKDt7yxljtNXJALf6MWkr9Eh4G-fNBm7Oy0FD60vVO9sU9DyrkEefoHvpQavSftjXtkTMrTxDs2M73-JHp985F6wBqcofurGICtm3tDS0Q5tLICCALhM6M-_-GTZDeCsb6m0upyLjkRKptuHG4cQsaK',
+              fechaCreacion: '2024-01-15T10:00:00Z'
+            },
+            {
+              id: 2,
+              codigo: 'ARC-002',
+              titulo: 'Memorias de un Viaje',
+              anio: '2018',
+              pais: 'Colombia',
+              empresa: 'RCN Televisión',
+              director: 'Carlos Rivas',
+              duracion: '00:45:00',
+              actual: 1,
+              antiguo: 0,
+              estado: 'Pendiente',
+              imagen: '35mm',
+              sonido: 'Estéreo',
+              material: '35mm',
+              autor: 'Carlos Rivas',
+              portada: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCW_3orOsWoHHdST-dZinjKVs1yDo1aagTRb45Kj8gWT-1Kx-chb6cwVhpG5dSDEt312WnpvhtgXExmRXQciLdEDGPb172GZTOFI9iXHZw2-IL1BRXHz7WT78YEsGhwcgGJQuScS-P4rWk5_x_lopi569EikI9lKOWr4liPCxBBwZ3Km9TkqTYCJAOC0guiFvzGto_8m_C56KhfRSLs4REkcLokW7cVQlrpKLj1Z0o5UiwqXUwacXrexCkFzHeiNdyONR_kPgoHahjJ',
+              fechaCreacion: '2024-01-14T15:30:00Z'
+            }
+          ];
+          localStorage.setItem('inventoryData', JSON.stringify(sampleData));
+        }
+      }
+
+      // Get inventory data
+      function getInventoryData() {
+        return JSON.parse(localStorage.getItem('inventoryData') || '[]');
+      }
+
+      // Save inventory data
+      function saveInventoryData(data) {
+        localStorage.setItem('inventoryData', JSON.stringify(data));
+      }
 
       document.addEventListener('DOMContentLoaded', function() {
+        // Initialize data
+        initializeInventoryData();
+        const inventoryData = getInventoryData();
+        filteredData = [...inventoryData];
+
+        // Setup event listeners
+        setupEventListeners();
+        
+        // Initial render
+        renderTable();
+      });
+
+      function setupEventListeners() {
         const profileBtn = document.getElementById('profileBtn');
         const profileDropdown = document.getElementById('profileDropdown');
         const searchInput = document.getElementById('searchInput');
+        const agregarSoporteBtn = document.getElementById('agregarSoporteBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const saveDraftBtn = document.getElementById('save-draft-btn');
+        const saveBtn = document.getElementById('save-btn');
+        const agregarCreditoBtn = document.getElementById('agregar-credito-btn');
 
-        profileBtn.addEventListener('click', function() {
-          profileDropdown.classList.toggle('hidden');
-        });
+        // Profile dropdown
+        if (profileBtn) {
+          profileBtn.addEventListener('click', function() {
+            profileDropdown.classList.toggle('hidden');
+          });
+        }
 
         // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
-          if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
+          if (profileBtn && !profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
             profileDropdown.classList.add('hidden');
           }
         });
 
         // Search functionality
-        searchInput.addEventListener('input', function() {
-          performSearch();
-        });
+        if (searchInput) {
+          searchInput.addEventListener('input', function() {
+            performSearch();
+          });
+        }
 
-        // Initial render
-        renderTable();
-      });
+        // Modal controls
+        if (agregarSoporteBtn) {
+          agregarSoporteBtn.addEventListener('click', openModal);
+        }
+
+        if (closeModalBtn) {
+          closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', closeModal);
+        }
+
+        if (saveDraftBtn) {
+          saveDraftBtn.addEventListener('click', guardarBorrador);
+        }
+
+        if (saveBtn) {
+          saveBtn.addEventListener('click', guardarYCerrar);
+        }
+
+        if (agregarCreditoBtn) {
+          agregarCreditoBtn.addEventListener('click', agregarCredito);
+        }
+
+        // Close modal when clicking outside
+        const modal = document.getElementById('recordFormModal');
+        if (modal) {
+          modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+              closeModal();
+            }
+          });
+        }
+      }
 
       function selectFilter(button, filterType) {
         // Reset all filter buttons
@@ -463,6 +1001,7 @@
 
       function performSearch() {
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const inventoryData = getInventoryData();
         
         if (searchTerm === '') {
           filteredData = [...inventoryData];
@@ -470,15 +1009,15 @@
           filteredData = inventoryData.filter(item => {
             switch (currentFilter) {
               case 'nombre':
-                return item.nombre.toLowerCase().includes(searchTerm);
+                return item.titulo.toLowerCase().includes(searchTerm);
               case 'año':
-                return item.año.toLowerCase().includes(searchTerm);
+                return item.anio.toLowerCase().includes(searchTerm);
               case 'material':
                 return item.material.toLowerCase().includes(searchTerm);
               case 'autor':
                 return item.autor.toLowerCase().includes(searchTerm);
               default:
-                return item.nombre.toLowerCase().includes(searchTerm);
+                return item.titulo.toLowerCase().includes(searchTerm);
             }
           });
         }
@@ -493,27 +1032,255 @@
         filteredData.forEach(item => {
           const row = document.createElement('tr');
           row.className = 'border-t border-t-[#e3dfd4] hover:bg-[#E8C8C8] cursor-pointer';
-          row.onclick = () => window.location.href = `./detail.html?id=${item.id}`;
 
           row.innerHTML = `
             <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-56 h-[72px] px-4 py-2 w-14 text-sm font-normal leading-normal">
               <div
                 class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10"
-                style="background-image: url('${item.portada}');"
+                style="background-image: url('${item.portada || 'https://via.placeholder.com/40'}');"
               ></div>
             </td>
             <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-176 h-[72px] px-4 py-2 w-[400px] text-[#191610] text-sm font-normal leading-normal">
-              <a href="./detail.html?id=${item.id}">${item.nombre}</a>
+              <a href="./detail.html?id=${item.id}">${item.titulo}</a>
             </td>
-            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-296 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">${item.año}</td>
+            <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-296 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">${item.anio}</td>
             <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-416 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">${item.material}</td>
             <td class="table-385bc82c-1254-4fa3-b318-d0b4e14efc5d-column-536 h-[72px] px-4 py-2 w-[400px] text-[#8b7e5b] text-sm font-normal leading-normal">
               ${item.autor}
+            </td>
+            <td class="h-[72px] px-4 py-2 w-32 text-sm font-normal leading-normal">
+              <div class="flex gap-2">
+                <button onclick="editarRegistro(${item.id})" class="px-3 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">
+                  Editar
+                </button>
+                <button onclick="eliminarRegistro(${item.id})" class="px-3 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600">
+                  Eliminar
+                </button>
+              </div>
             </td>
           `;
 
           tbody.appendChild(row);
         });
+      }
+
+      // Modal functions
+      function openModal(recordId = null) {
+        currentRecordId = recordId;
+        const modal = document.getElementById('recordFormModal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          
+          if (recordId) {
+            // Load record data for editing
+            loadRecordData(recordId);
+          } else {
+            // Clear form for new record
+            clearForm();
+          }
+        }
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('recordFormModal');
+        if (modal) {
+          modal.classList.add('hidden');
+          currentRecordId = null;
+          creditos = [];
+          clearForm();
+        }
+      }
+
+      function clearForm() {
+        const form = document.getElementById('recordForm');
+        if (form) {
+          form.reset();
+          creditos = [];
+          actualizarTablaCreditos();
+        }
+      }
+
+      function loadRecordData(recordId) {
+        const inventoryData = getInventoryData();
+        const record = inventoryData.find(item => item.id === recordId);
+        
+        if (record) {
+          // Fill form fields
+          document.getElementById('codigo').value = record.codigo || '';
+          document.getElementById('titulo').value = record.titulo || '';
+          document.getElementById('anio').value = record.anio || '';
+          document.getElementById('pais').value = record.pais || '';
+          document.getElementById('empresa').value = record.empresa || '';
+          document.getElementById('director').value = record.director || '';
+          document.getElementById('duracion').value = record.duracion || '';
+          document.getElementById('actual').value = record.actual || '';
+          document.getElementById('antiguo').value = record.antiguo || '';
+          document.getElementById('imagen').value = record.imagen || '';
+          document.getElementById('sonido').value = record.sonido || '';
+          document.getElementById('sinopsis').value = record.sinopsis || '';
+          document.getElementById('observaciones').value = record.observaciones || '';
+          document.getElementById('linkKoha').value = record.linkKoha || '';
+          
+          // Load credits
+          creditos = record.creditos || [];
+          actualizarTablaCreditos();
+        }
+      }
+
+      // Form functions
+      function agregarCredito() {
+        const nombre = document.getElementById('nombrePersona')?.value;
+        const rol = document.getElementById('rolPersona')?.value;
+        
+        if (nombre && rol) {
+          const credito = {
+            id: Date.now(),
+            nombre: nombre,
+            rol: rol
+          };
+          
+          creditos.push(credito);
+          actualizarTablaCreditos();
+          
+          // Clear inputs
+          document.getElementById('nombrePersona').value = '';
+          document.getElementById('rolPersona').value = '';
+        } else {
+          alert('Por favor complete todos los campos');
+        }
+      }
+
+      function actualizarTablaCreditos() {
+        const tbody = document.getElementById('creditosTableBody');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        creditos.forEach(credito => {
+          const row = document.createElement('tr');
+          row.className = 'border-t border-[#e3dfd4]';
+          row.innerHTML = `
+            <td class="px-4 py-2 text-sm text-[#191610]">${credito.nombre}</td>
+            <td class="px-4 py-2 text-sm text-[#191610]">${credito.rol}</td>
+            <td class="px-4 py-2 text-sm text-[#191610]">
+              <button class="eliminar-credito-btn px-2 py-1 bg-red-500 text-white rounded text-xs" data-id="${credito.id}">Eliminar</button>
+            </td>
+          `;
+          
+          // Add event listener to delete button
+          const deleteBtn = row.querySelector('.eliminar-credito-btn');
+          deleteBtn.addEventListener('click', () => eliminarCredito(credito.id));
+          
+          tbody.appendChild(row);
+        });
+      }
+
+      function eliminarCredito(id) {
+        creditos = creditos.filter(c => c.id !== id);
+        actualizarTablaCreditos();
+      }
+
+      function obtenerDatosFormulario() {
+        return {
+          id: currentRecordId || Date.now(),
+          codigo: document.getElementById('codigo')?.value || '',
+          titulo: document.getElementById('titulo')?.value || '',
+          anio: document.getElementById('anio')?.value || '',
+          pais: document.getElementById('pais')?.value || '',
+          empresa: document.getElementById('empresa')?.value || '',
+          director: document.getElementById('director')?.value || '',
+          duracion: document.getElementById('duracion')?.value || '',
+          actual: document.getElementById('actual')?.value || '',
+          antiguo: document.getElementById('antiguo')?.value || '',
+          productorEjecutivo: document.getElementById('productorEjecutivo')?.value || '',
+          productorAsociado: document.getElementById('productorAsociado')?.value || '',
+          guionista: document.getElementById('guionista')?.value || '',
+          fotografo: document.getElementById('fotografo')?.value || '',
+          editor: document.getElementById('editor')?.value || '',
+          imagen: document.getElementById('imagen')?.value || '',
+          sonido: document.getElementById('sonido')?.value || '',
+          negativo: document.getElementById('negativo')?.checked || false,
+          positivo: document.getElementById('positivo')?.checked || false,
+          reversible: document.getElementById('reversible')?.checked || false,
+          blanco: document.getElementById('blanco')?.checked || false,
+          negro: document.getElementById('negro')?.checked || false,
+          color: document.getElementById('color')?.checked || false,
+          filmico: document.getElementById('filmico')?.checked || false,
+          magnetico: document.getElementById('magnetico')?.checked || false,
+          optico: document.getElementById('optico')?.checked || false,
+          digital: document.getElementById('digital')?.checked || false,
+          restaurado: document.getElementById('restaurado')?.checked || false,
+          fechaRestauracion: document.getElementById('fechaRestauracion')?.value || '',
+          resolucionCodec: document.getElementById('resolucionCodec')?.value || '',
+          peso: document.getElementById('peso')?.value || '',
+          aspectRatio: document.getElementById('aspectRatio')?.value || '',
+          fps: document.getElementById('fps')?.value || '',
+          nuevoPh: document.getElementById('nuevoPh')?.value || '',
+          tipoUbicacion: document.getElementById('tipoUbicacion')?.value || '',
+          codigoUbicacion: document.getElementById('codigoUbicacion')?.value || '',
+          sinopsis: document.getElementById('sinopsis')?.value || '',
+          creditos: creditos,
+          guion: document.getElementById('guion')?.value || '',
+          fotografias: document.getElementById('fotografias')?.checked || false,
+          cartel: document.getElementById('cartel')?.checked || false,
+          sonidoMusica: document.getElementById('sonidoMusica')?.checked || false,
+          observaciones: document.getElementById('observaciones')?.value || '',
+          linkKoha: document.getElementById('linkKoha')?.value || '',
+          fechaCreacion: currentRecordId ? getInventoryData().find(r => r.id === currentRecordId)?.fechaCreacion : new Date().toISOString(),
+          fechaModificacion: new Date().toISOString()
+        };
+      }
+
+      function guardarBorrador() {
+        const formData = obtenerDatosFormulario();
+        formData.estado = 'borrador';
+        guardarRegistro(formData);
+        alert('Borrador guardado exitosamente');
+        // Keep modal open for draft
+      }
+
+      function guardarYCerrar() {
+        const formData = obtenerDatosFormulario();
+        formData.estado = 'completado';
+        guardarRegistro(formData);
+        alert('Registro guardado exitosamente');
+        closeModal();
+      }
+
+      function guardarRegistro(data) {
+        const inventoryData = getInventoryData();
+
+        if (currentRecordId) {
+          // Update existing record
+          const index = inventoryData.findIndex(r => r.id === currentRecordId);
+          if (index !== -1) {
+            inventoryData[index] = data;
+          }
+        } else {
+          // Add new record
+          inventoryData.push(data);
+        }
+
+        saveInventoryData(inventoryData);
+        
+        // Refresh the table
+        filteredData = [...inventoryData];
+        performSearch();
+      }
+
+      function editarRegistro(id) {
+        openModal(id);
+      }
+
+      function eliminarRegistro(id) {
+        if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+          const inventoryData = getInventoryData();
+          const filteredData = inventoryData.filter(r => r.id !== id);
+          saveInventoryData(filteredData);
+          
+          // Refresh the table
+          performSearch();
+        }
       }
 
       function logout() {
