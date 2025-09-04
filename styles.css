@@ -87,3 +87,11 @@ input:valid {
 .fpfc-logo {
   filter: drop-shadow(1px 2px 3px #2f2e2e);
 }
+
+/* Clase para navegación activa */
+.nav-active {
+  color: #8b5a3c !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #8b5a3c;
+  padding-bottom: 2px;
+}
